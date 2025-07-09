@@ -1,17 +1,23 @@
 export const projects = [
   {
-    title: "E-Commerce MERN App",
-    description: "A full-stack e-commerce application with product search, cart, payment integration, and admin dashboard.",
-    github: "https://github.com/your-username/ecommerce-app"
+    title: "TechZone - E-Commerce Website",
+    description: "Full-stack MERN e-commerce platform with product management, secure authentication, and responsive design.",
+    github: "https://github.com/SumindaBandara/StoreBackEnd.git",
+    image: "/assets/p1.png",
+    technologies: ["React", "Node.js", "MongoDB", "Express", "Clerk Authentication"]
   },
   {
-    title: "Digital Marketing Dashboard",
-    description: "Dashboard to track ad campaigns, SEO performance, and traffic analytics.",
-    github: "https://github.com/your-username/marketing-dashboard"
+    title: "Autos Vehicle Bidding Platform",
+    description: "Real-time vehicle auction system with React frontend and .NET backend.",
+    github: "https://github.com/SumindaBandara/VehicleBiddingSite.git",
+    image: "/assets/p2.png",
+    technologies: ["React", "C#", ".NET Framework", "SQL Server", "Entity Framework"]
   },
   {
-    title: "Portfolio Website",
-    description: "This portfolio you're viewing now, built using React + Tailwind CSS.",
-    github: "https://github.com/your-username/portfolio"
+    title: "MindClick Digital",
+    description: "Digital marketing platform with analytics dashboard and campaign management tools.",
+    github: "https://github.com/SumindaBandara/MindClickDigital",
+    image: "/assets/p3.png",
+    technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"]
   }
 ];

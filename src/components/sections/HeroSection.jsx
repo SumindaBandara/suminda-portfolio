@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Code, TrendingUp, ChevronDown, ExternalLink, Star, GitBranch, Eye } from 'lucide-react';
 
-import profileImage from '../../assets/abcd.jpg';
+
 
 const HeroSection = () => {
   const [currentRole, setCurrentRole] = useState(0);
@@ -104,7 +104,7 @@ const HeroSection = () => {
               <div className="relative mx-auto lg:mx-0 w-32 h-32 mb-8 group">
                 <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 rounded-full p-1 animate-pulse">
                   <img 
-                      src={profileImage} 
+                      src="/assets/abcd.jpg"
                           alt="Funky Boyz"
                           className="w-full h-full rounded-full object-cover"
 />
