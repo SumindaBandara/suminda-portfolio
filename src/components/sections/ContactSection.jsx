@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   Mail, 
   Phone, 
@@ -33,21 +33,21 @@ const ModernContactSection = () => {
       icon: Mail,
       title: "Email",
       value: "sumindabandarapc@gmail.com",
-      link: "sumindabandarapc@gmail.com",
+      link: "mailto:sumindabandarapc@gmail.com",
       color: "from-red-500 to-orange-500"
     },
     {
       icon: Phone,
       title: "Phone",
       value: "+94 751380749",
-      link: "+94 751380749",
+      link: "tel:+94751380749",
       color: "from-green-500 to-emerald-500"
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "Kandy,Srilanka",
-      link: "https://maps.google.com/?q=Kalmunai,Eastern+Province,LK",
+      value: "Kandy, Sri Lanka",
+      link: "https://maps.google.com/?q=Kandy,Sri+Lanka",
       color: "from-blue-500 to-cyan-500"
     },
     {
@@ -75,21 +75,6 @@ const ModernContactSection = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus({
-        type: 'success',
-        message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.'
-      });
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 2000);
-  };
-
   const inputClasses = (fieldName) => `
     w-full px-4 py-4 bg-slate-800/50 backdrop-blur-sm border rounded-2xl 
     text-white placeholder-gray-400 transition-all duration-300 focus:outline-none
@@ -99,51 +84,55 @@ const ModernContactSection = () => {
     }
   `;
 
-  //web3form
   const onSubmit = async (event) => {
-  event.preventDefault();
-  setIsSubmitting(true);
-  
-  try {
-    const formData = new FormData();
-    formData.append("name", formData.name);
-    formData.append("email", formData.email);
-    formData.append("subject", formData.subject);
-    formData.append("message", formData.message);
-    formData.append("access_key", "f92d23d2-5491-4b38-b56c-57a11fc7367c"); // Replace with your key
+    event.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus({ type: '', message: '' });
+    
+    try {
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        access_key: "f92d23d2-5491-4b38-b56c-57a11fc7367c",
+        botcheck: false
+      };
 
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify(Object.fromEntries(formData))
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      setFormStatus({
-        type: 'success',
-        message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.'
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
       });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } else {
+
+      const data = await response.json();
+      
+      if (data.success) {
+        setFormStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.'
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setFormStatus({
+          type: 'error',
+          message: data.message || 'Something went wrong. Please try again.'
+        });
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
       setFormStatus({
         type: 'error',
-        message: data.message || 'Something went wrong. Please try again.'
+        message: 'Failed to send message. Please check your connection and try again.'
       });
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (error) {
-    setFormStatus({
-      type: 'error',
-      message: 'Failed to send message. Please check your connection and try again.'
-    });
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
+
   return (
     <section id="contact" className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
       {/* Background Elements */}
