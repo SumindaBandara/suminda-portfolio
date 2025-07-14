@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   Mail, 
   Phone, 
@@ -13,9 +13,9 @@ import {
   User,
   MessageCircle,
   Globe,
-  Calendar,
   Coffee
 } from 'lucide-react';
+import { Toaster, toast } from 'react-hot-toast';
 
 const ModernContactSection = () => {
   const [formData, setFormData] = useState({
@@ -79,15 +79,48 @@ const ModernContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus({
-        type: 'success',
-        message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.'
+    const formPayload = new FormData(e.target);
+    formPayload.append("access_key", "f92d23d2-5491-4b38-b56c-57a11fc7367c");
+    formPayload.append("subject", "New Contact Form Submission");
+    formPayload.append("from_name", "Portfolio Contact Form");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(Object.fromEntries(formPayload))
       });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success("Message sent successfully!");
+        setFormStatus({
+          type: 'success',
+          message: "Thank you! Your message has been sent successfully. I'll get back to you soon."
+        });
+        e.target.reset();
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        toast.error(data.message || "Failed to send message");
+        setFormStatus({
+          type: 'error',
+          message: data.message || "Something went wrong. Please try again later."
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Failed to connect to the server. Please try again later.");
+      setFormStatus({
+        type: 'error',
+        message: "Failed to connect to the server. Please try again later."
+      });
+    } finally {
       setIsSubmitting(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 2000);
+    }
   };
 
   const inputClasses = (fieldName) => `
@@ -101,6 +134,8 @@ const ModernContactSection = () => {
 
   return (
     <section id="contact" className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
+      <Toaster position="top-right" />
+      
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-10 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
@@ -329,7 +364,7 @@ const ModernContactSection = () => {
                     <div className="text-sm text-gray-300">Client Satisfaction</div>
                   </div>
                   <div className="text-center p-4 bg-slate-700/30 rounded-xl">
-                    <div className="text-2xl font-bold text-cyan-400">2+</div>
+                    <div className="text-2xl font-bold text-cyan-400">3+</div>
                     <div className="text-sm text-gray-300">Years Experience</div>
                   </div>
                 </div>
