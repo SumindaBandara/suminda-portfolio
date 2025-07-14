@@ -84,54 +84,54 @@ const ModernContactSection = () => {
     }
   `;
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-    setFormStatus({ type: '', message: '' });
+  // Update your onSubmit function
+const onSubmit = async (event) => {
+  event.preventDefault();
+  setIsSubmitting(true);
+  setFormStatus({ type: '', message: '' });
+  
+  try {
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      access_key: "f92d23d2-5491-4b38-b56c-57a11fc7367c",
+      botcheck: false
+    };
+
+    // Use Netlify Functions as a proxy
+    const response = await fetch("/.netlify/functions/submit-form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
     
-    try {
-      const payload = {
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        access_key: "f92d23d2-5491-4b38-b56c-57a11fc7367c",
-        botcheck: false
-      };
-
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(payload)
+    if (data.success) {
+      setFormStatus({
+        type: 'success',
+        message: 'Message sent successfully!'
       });
-
-      const data = await response.json();
-      
-      if (data.success) {
-        setFormStatus({
-          type: 'success',
-          message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.'
-        });
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else {
-        setFormStatus({
-          type: 'error',
-          message: data.message || 'Something went wrong. Please try again.'
-        });
-      }
-    } catch (error) {
-      console.error('Submission error:', error);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } else {
       setFormStatus({
         type: 'error',
-        message: 'Failed to send message. Please check your connection and try again.'
+        message: data.message || 'Submission failed'
       });
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+  } catch (error) {
+    setFormStatus({
+      type: 'error',
+      message: `Error: ${error.message}`
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <section id="contact" className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
