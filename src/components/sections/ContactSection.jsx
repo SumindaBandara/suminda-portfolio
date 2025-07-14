@@ -99,6 +99,51 @@ const ModernContactSection = () => {
     }
   `;
 
+  //web3form
+  const onSubmit = async (event) => {
+  event.preventDefault();
+  setIsSubmitting(true);
+  
+  try {
+    const formData = new FormData();
+    formData.append("name", formData.name);
+    formData.append("email", formData.email);
+    formData.append("subject", formData.subject);
+    formData.append("message", formData.message);
+    formData.append("access_key", "f92d23d2-5491-4b38-b56c-57a11fc7367c"); // Replace with your key
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(Object.fromEntries(formData))
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      setFormStatus({
+        type: 'success',
+        message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.'
+      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } else {
+      setFormStatus({
+        type: 'error',
+        message: data.message || 'Something went wrong. Please try again.'
+      });
+    }
+  } catch (error) {
+    setFormStatus({
+      type: 'error',
+      message: 'Failed to send message. Please check your connection and try again.'
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
   return (
     <section id="contact" className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
       {/* Background Elements */}
@@ -131,7 +176,7 @@ const ModernContactSection = () => {
                 <h3 className="text-2xl font-bold text-white">Send a Message</h3>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={onSubmit} className="space-y-6">
                 {/* Name Input */}
                 <div className="relative">
                   <div className="absolute left-4 top-4 text-gray-400">
