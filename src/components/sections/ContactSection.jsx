@@ -13,7 +13,9 @@ import {
   User,
   MessageCircle,
   Globe,
-  Coffee
+  Coffee,
+  TwitterIcon,
+  XIcon
 } from 'lucide-react';
 import { Toaster, toast } from 'react-hot-toast';
 
@@ -62,9 +64,9 @@ const ModernContactSection = () => {
   const socialLinks = [
     { icon: Github, name: "GitHub", url: "https://github.com/SumindaBandara", color: "hover:text-gray-400" },
     { icon: Linkedin, name: "LinkedIn", url: "https://www.linkedin.com/in/suminda-rathna-bandara-b66063255/", color: "hover:text-blue-400" },
-    { icon: Twitter, name: "Twitter", url: "https://twitter.com/funkyboyz", color: "hover:text-sky-400" },
-    { icon: Instagram, name: "Instagram", url: "https://www.instagram.com/suminda_bandara/", color: "hover:text-pink-400" },
-    { icon: Globe, name: "Website", url: "https://funkyboyz.dev", color: "hover:text-purple-400" }
+    
+    { icon: Instagram, name: "Instagram", url: "https://www.instagram.com/suminda_bandara/", color: "hover:text-pink-400" }
+    
   ];
 
   const handleInputChange = (e) => {
@@ -153,9 +155,10 @@ const ModernContactSection = () => {
             Ready to bring your ideas to life? Whether you need development expertise or marketing strategy, I'm here to help.
           </p>
         </div>
-
+        
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Form */}
+          <section id="contact">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl"></div>
             <div className="relative bg-slate-800/30 backdrop-blur-sm border border-slate-700 rounded-3xl p-8">
@@ -275,6 +278,7 @@ const ModernContactSection = () => {
               </form>
             </div>
           </div>
+          </section>
 
           {/* Contact Information */}
           <div className="space-y-8">
@@ -295,7 +299,7 @@ const ModernContactSection = () => {
                     return (
                       <a
                         key={index}
-                        href={info.link}
+                        
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center space-x-4 p-4 bg-slate-700/30 rounded-xl hover:bg-slate-700/50 transition-all duration-300 group"

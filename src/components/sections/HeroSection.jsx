@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Code, TrendingUp, ChevronDown, ExternalLink, Star, GitBranch, Eye } from 'lucide-react';
-
-
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const [currentRole, setCurrentRole] = useState(0);
@@ -96,18 +95,17 @@ const HeroSection = () => {
       {/* Main Content */}
       <div className="relative z-20 min-h-screen flex flex-col">
         {/* Hero Section */}
-        <section id="home" className="flex-1 flex items-center justify-center px-6 py-20">
+        <section id="home" className="flex-1 flex flex-col items-center justify-center px-6 py-20 gap-16">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Content */}
             <div className={`text-center lg:text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {/* Profile Image Placeholder */}
               <div className="relative mx-auto lg:mx-0 w-32 h-32 mb-8 group">
                 <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 rounded-full p-1 animate-pulse">
                   <img 
                       src="/assets/abcd.jpg"
-                          alt="Funky Boyz"
-                          className="w-full h-full rounded-full object-cover"
-/>
+                      alt="Funky Boyz"
+                      className="w-full h-full rounded-full object-cover"
+                  />
                 </div>
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
               </div>
@@ -116,7 +114,6 @@ const HeroSection = () => {
                 Hi, I'm <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Suminda Bandara</span>
               </h1>
               
-              {/* Animated Role Switcher */}
               <div className="h-20 flex items-center justify-center lg:justify-start mb-6">
                 <div className={`flex items-center space-x-3 transition-all duration-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
                   <div className={`p-3 rounded-full bg-gradient-to-r ${roles[currentRole].color}`}>
@@ -133,19 +130,21 @@ const HeroSection = () => {
                 <span className="text-purple-400 font-semibold"> strategic marketing</span> to create digital experiences that not only function flawlessly but also drive meaningful engagement and growth.
               </p>
 
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full hover:from-blue-600 hover:to-purple-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                {/* <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full hover:from-blue-600 hover:to-purple-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                   View My Work
-                </button>
+                </button> */}
                 <button className="px-8 py-4 border-2 border-gray-300 text-gray-300 font-semibold rounded-full hover:bg-white hover:text-slate-900 transition-all duration-300">
+                  <a
+                      href="#contact" >
                   Get In Touch
+                </a>
                 </button>
               </div>
             </div>
 
-            {/* Right Side - Skills Visual */}
-            <div className={`hidden lg:block transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+            {/* Right Side - Skills Visual — now visible for all devices */}
+            <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl"></div>
                 <div className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-3xl p-8">
@@ -155,7 +154,7 @@ const HeroSection = () => {
                       <Code className="w-12 h-12 text-blue-400 mx-auto mb-4" />
                       <h3 className="text-white font-semibold mb-2">Development</h3>
                       <div className="space-y-2">
-                        {["React", "Node.js", "MongoDB", "Express"].map((skill, index) => (
+                        {["React", "Node.js", "MongoDB", "Express","Java","Flutter"].map((skill) => (
                           <div key={skill} className="bg-slate-700 rounded-full px-3 py-1 text-sm text-gray-300">
                             {skill}
                           </div>
@@ -168,7 +167,7 @@ const HeroSection = () => {
                       <TrendingUp className="w-12 h-12 text-purple-400 mx-auto mb-4" />
                       <h3 className="text-white font-semibold mb-2">Marketing</h3>
                       <div className="space-y-2">
-                        {["SEO", "Analytics", "Social Media", "PPC"].map((skill, index) => (
+                        {["Social Media Marketing", "SEO", "Social Media Management", "Brand Stratergy","Startup Marketing","consultation"].map((skill) => (
                           <div key={skill} className="bg-slate-700 rounded-full px-3 py-1 text-sm text-gray-300">
                             {skill}
                           </div>
@@ -187,9 +186,6 @@ const HeroSection = () => {
           <ChevronDown className="w-6 h-6 text-gray-400" />
         </div>
       </div>
-
-      {/* Projects Section */}
-      
     </div>
   );
 };

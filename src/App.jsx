@@ -13,7 +13,7 @@ import ProjectsPage from './components/sections/ProjectsPage'; // ✅ import the
 function App() {
   return (
     <Router>
-      <div className="bg-gray-100 text-gray-800 font-sans">
+      <div className="bg-gray-100 text-gray-800 font-sans scroll-smooth">
         <Navbar />
 
         <Routes>
@@ -30,6 +30,7 @@ function App() {
             }
           />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/contact" element={<ContactSection />} />
         </Routes>
 
         <Footer />
