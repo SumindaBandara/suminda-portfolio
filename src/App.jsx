@@ -10,31 +10,41 @@ import ContactSection from './components/sections/ContactSection';
 import Footer from './components/layout/Footer';
 import ProjectsPage from './components/sections/ProjectsPage'; // ✅ import the page
 
+import BookAnimationPage from './components/sections/BookAnimationPage';
+
 function App() {
   return (
     <Router>
       <div className="bg-gray-100 text-gray-800 font-sans scroll-smooth">
-        <Navbar />
+        
 
         <Routes>
           <Route
             path="/"
             element={
               <main>
+                <Navbar />
                 <HeroSection />
                 <AboutSection />
                 <ProjectsSection />
                 <SkillsSection />
                 <ContactSection />
+                
+                <Footer />
               </main>
             }
           />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactSection />} />
+          
+
+          <Route path="/animation" element={<BookAnimationPage />} />
         </Routes>
 
-        <Footer />
+       
+        
       </div>
+      
     </Router>
   );
 }

@@ -1,0 +1,505 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Facebook,
+  Instagram,
+  Twitter,
+  Youtube,
+  Linkedin,
+  MessageCircle,
+  Send,
+  Music2,
+  Camera,
+  ShoppingBag,
+  PlayCircle,
+  Gamepad2,
+  Mail,
+  Video,
+  Phone,
+  Share2,
+  TrendingUp,
+  Heart,
+  Bell,
+  Users,
+  MapPin,
+  Calendar,
+  Clock,
+  Zap,
+  Star,
+  Globe,
+  Bookmark
+} from 'lucide-react';
+
+// 27 Social media and trendy app icons with tech-inspired colors
+const appIcons = [
+  { Icon: Facebook, color: 'from-blue-500 to-blue-700', name: 'Facebook', glowColor: '#3b82f6' },
+  { Icon: Instagram, color: 'from-pink-500 via-purple-500 to-orange-500', name: 'Instagram', glowColor: '#ec4899' },
+  { Icon: Twitter, color: 'from-sky-400 to-blue-500', name: 'Twitter', glowColor: '#38bdf8' },
+  { Icon: Youtube, color: 'from-red-500 to-red-700', name: 'YouTube', glowColor: '#ef4444' },
+  { Icon: Linkedin, color: 'from-blue-600 to-blue-800', name: 'LinkedIn', glowColor: '#2563eb' },
+  { Icon: MessageCircle, color: 'from-green-400 to-green-600', name: 'WhatsApp', glowColor: '#22c55e' },
+  { Icon: Send, color: 'from-blue-400 to-sky-500', name: 'Telegram', glowColor: '#60a5fa' },
+  { Icon: Music2, color: 'from-green-500 to-green-700', name: 'Spotify', glowColor: '#22c55e' },
+  { Icon: Camera, color: 'from-yellow-400 to-pink-500', name: 'Snapchat', glowColor: '#facc15' },
+  { Icon: ShoppingBag, color: 'from-orange-400 to-red-500', name: 'Shopping', glowColor: '#fb923c' },
+  { Icon: PlayCircle, color: 'from-purple-500 to-pink-600', name: 'TikTok', glowColor: '#a855f7' },
+  { Icon: Gamepad2, color: 'from-indigo-500 to-purple-600', name: 'Gaming', glowColor: '#6366f1' },
+  { Icon: Mail, color: 'from-cyan-400 to-blue-500', name: 'Email', glowColor: '#22d3ee' },
+  { Icon: Video, color: 'from-rose-500 to-pink-600', name: 'Video', glowColor: '#f43f5e' },
+  { Icon: Phone, color: 'from-emerald-400 to-teal-500', name: 'Phone', glowColor: '#34d399' },
+  { Icon: Share2, color: 'from-violet-500 to-purple-600', name: 'Share', glowColor: '#8b5cf6' },
+  { Icon: TrendingUp, color: 'from-amber-400 to-orange-500', name: 'Trending', glowColor: '#fbbf24' },
+  { Icon: Heart, color: 'from-red-400 to-rose-600', name: 'Favorites', glowColor: '#f87171' },
+  { Icon: Bell, color: 'from-yellow-400 to-amber-500', name: 'Notifications', glowColor: '#facc15' },
+  { Icon: Users, color: 'from-blue-400 to-indigo-500', name: 'Community', glowColor: '#60a5fa' },
+  { Icon: MapPin, color: 'from-red-500 to-pink-600', name: 'Location', glowColor: '#ef4444' },
+  { Icon: Calendar, color: 'from-purple-400 to-violet-500', name: 'Calendar', glowColor: '#c084fc' },
+  { Icon: Clock, color: 'from-teal-400 to-cyan-500', name: 'Time', glowColor: '#2dd4bf' },
+  { Icon: Zap, color: 'from-yellow-300 to-yellow-500', name: 'Energy', glowColor: '#fde047' },
+  { Icon: Star, color: 'from-amber-400 to-yellow-500', name: 'Featured', glowColor: '#fbbf24' },
+  { Icon: Globe, color: 'from-blue-500 to-cyan-500', name: 'Web', glowColor: '#3b82f6' },
+  { Icon: Bookmark, color: 'from-pink-400 to-rose-500', name: 'Saved', glowColor: '#f472b6' }
+];
+
+// Digital particles for tech atmosphere
+const DigitalParticle = ({ delay, duration }) => {
+  return (
+    <motion.div
+      className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+      initial={{ 
+        x: Math.random() * window.innerWidth,
+        y: window.innerHeight + 50,
+        opacity: 0 
+      }}
+      animate={{
+        y: -50,
+        opacity: [0, 1, 0],
+      }}
+      transition={{
+        duration: duration,
+        delay: delay,
+        repeat: Infinity,
+        ease: "linear"
+      }}
+    />
+  );
+};
+
+// Circuit board pattern lines
+const CircuitLine = ({ delay }) => {
+  const isHorizontal = Math.random() > 0.5;
+  const position = Math.random() * 100;
+  
+  return (
+    <motion.div
+      className="absolute bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-20"
+      style={{
+        [isHorizontal ? 'top' : 'left']: `${position}%`,
+        [isHorizontal ? 'width' : 'height']: '100%',
+        [isHorizontal ? 'height' : 'width']: '1px',
+      }}
+      initial={{ opacity: 0 }}
+      animate={{ 
+        opacity: [0, 0.3, 0],
+      }}
+      transition={{
+        duration: 3,
+        delay: delay,
+        repeat: Infinity,
+      }}
+    />
+  );
+};
+
+// AI Core - central energy sphere
+const AICore = ({ active }) => {
+  return (
+    <motion.div
+      className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ 
+        scale: active ? 1 : 0,
+        opacity: active ? 1 : 0,
+      }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
+      {/* Outer rotating ring */}
+      <motion.div
+        className="absolute left-1/2 top-1/2 w-32 h-32 -ml-16 -mt-16 rounded-full border-2 border-cyan-500"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+      >
+        <div className="absolute w-2 h-2 bg-cyan-400 rounded-full top-0 left-1/2 transform -translate-x-1/2" />
+      </motion.div>
+
+      {/* Middle ring */}
+      <motion.div
+        className="absolute left-1/2 top-1/2 w-24 h-24 -ml-12 -mt-12 rounded-full border-2 border-purple-500"
+        animate={{ rotate: -360 }}
+        transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+      >
+        <div className="absolute w-2 h-2 bg-purple-400 rounded-full top-0 left-1/2 transform -translate-x-1/2" />
+      </motion.div>
+
+      {/* Inner core */}
+      <motion.div
+        className="absolute left-1/2 top-1/2 w-16 h-16 -ml-8 -mt-8 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500"
+        animate={{ 
+          scale: [1, 1.2, 1],
+          boxShadow: [
+            '0 0 20px rgba(6, 182, 212, 0.5)',
+            '0 0 40px rgba(168, 85, 247, 0.8)',
+            '0 0 20px rgba(6, 182, 212, 0.5)',
+          ]
+        }}
+        transition={{ duration: 2, repeat: Infinity }}
+      />
+
+      {/* Energy pulse */}
+      <motion.div
+        className="absolute left-1/2 top-1/2 w-32 h-32 -ml-16 -mt-16 rounded-full bg-cyan-500 opacity-20"
+        animate={{ 
+          scale: [1, 2, 1],
+          opacity: [0.2, 0, 0.2]
+        }}
+        transition={{ duration: 2, repeat: Infinity }}
+      />
+    </motion.div>
+  );
+};
+
+const BookAnimationPage = () => {
+  const [showCore, setShowCore] = useState(false);
+  const [showIcons, setShowIcons] = useState(false);
+  const [litIcons, setLitIcons] = useState(new Set());
+  const [hoveredIcon, setHoveredIcon] = useState(null);
+
+  useEffect(() => {
+    const coreTimer = setTimeout(() => setShowCore(true), 500);
+    const iconsTimer = setTimeout(() => setShowIcons(true), 1500);
+
+    return () => {
+      clearTimeout(coreTimer);
+      clearTimeout(iconsTimer);
+    };
+  }, []);
+
+  const handleIconInteraction = (index) => {
+    setLitIcons(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
+
+  // Calculate spiral formation positions - better organized and responsive
+  const getIconPosition = (index) => {
+    const total = appIcons.length;
+    const ringsCount = 3; // Number of concentric rings
+    const iconsPerRing = Math.ceil(total / ringsCount);
+    
+    // Determine which ring this icon belongs to
+    const ring = Math.floor(index / iconsPerRing);
+    const indexInRing = index % iconsPerRing;
+    const iconsInThisRing = Math.min(iconsPerRing, total - ring * iconsPerRing);
+    
+    // Calculate angle for even distribution
+    const angle = (indexInRing / iconsInThisRing) * Math.PI * 2 - Math.PI / 2;
+    
+    // Radius based on ring number (responsive to screen size)
+    const baseRadius = Math.min(window.innerWidth, window.innerHeight) * 0.15;
+    const radius = baseRadius + (ring * baseRadius * 0.8);
+    
+    return {
+      x: Math.cos(angle) * radius,
+      y: Math.sin(angle) * radius,
+    };
+  };
+
+  return (
+    <div className="relative w-full h-screen overflow-hidden bg-black">
+      {/* Animated tech grid background */}
+      <div className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+        }}
+      />
+
+      {/* Animated circuit lines */}
+      {[...Array(15)].map((_, i) => (
+        <CircuitLine key={`circuit-${i}`} delay={i * 0.3} />
+      ))}
+
+      {/* Digital particles rising */}
+      {[...Array(40)].map((_, i) => (
+        <DigitalParticle 
+          key={`particle-${i}`} 
+          delay={i * 0.2} 
+          duration={5 + Math.random() * 3}
+        />
+      ))}
+
+      {/* Radial gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black" />
+
+      {/* Central AI Core */}
+      <AICore active={showCore} />
+
+      {/* Data stream lines from core */}
+      <AnimatePresence>
+        {showCore && [...Array(8)].map((_, i) => {
+          const angle = (i / 8) * Math.PI * 2;
+          return (
+            <motion.div
+              key={`stream-${i}`}
+              className="absolute left-1/2 top-1/2 origin-bottom"
+              style={{
+                height: '400px',
+                width: '2px',
+                transform: `translate(-50%, -50%) rotate(${angle * (180 / Math.PI)}deg)`,
+              }}
+              initial={{ scaleY: 0, opacity: 0 }}
+              animate={{ 
+                scaleY: 1,
+                opacity: [0, 0.6, 0.6],
+              }}
+              transition={{
+                duration: 1.5,
+                delay: 1 + i * 0.1,
+              }}
+            >
+              <div className="w-full h-full bg-gradient-to-t from-cyan-500 via-purple-500 to-transparent" />
+              
+              {/* Traveling data packets */}
+              <motion.div
+                className="absolute w-3 h-3 bg-cyan-400 rounded-full shadow-lg shadow-cyan-500"
+                animate={{
+                  y: [0, -400],
+                  opacity: [1, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  delay: 1.5 + i * 0.1,
+                  repeat: Infinity,
+                  repeatDelay: 1,
+                }}
+              />
+            </motion.div>
+          );
+        })}
+      </AnimatePresence>
+
+      {/* Floating app icons with advanced effects */}
+      <AnimatePresence>
+        {showIcons && appIcons.map((app, index) => {
+          const position = getIconPosition(index);
+          const isLit = litIcons.has(index);
+          const isHovered = hoveredIcon === index;
+          const showEffect = isLit || isHovered;
+          
+          return (
+            <motion.div
+              key={index}
+              className="absolute left-1/2 top-1/2 cursor-pointer z-30"
+              initial={{ 
+                x: -24,
+                y: -24,
+                opacity: 0,
+                scale: 0,
+              }}
+              animate={{ 
+                x: position.x - 24,
+                y: position.y - 24,
+                opacity: showEffect ? 1 : 0.4,
+                scale: showEffect ? 1.2 : 0.8,
+              }}
+              transition={{
+                duration: 1.5,
+                delay: 1.5 + index * 0.08,
+                type: "spring",
+                stiffness: 60,
+              }}
+              onClick={() => handleIconInteraction(index)}
+              onHoverStart={() => setHoveredIcon(index)}
+              onHoverEnd={() => setHoveredIcon(null)}
+              onTouchStart={() => handleIconInteraction(index)}
+            >
+              {/* Hexagonal glow effect */}
+              {showEffect && (
+                <>
+                  <motion.div
+                    className="absolute w-24 h-24 -left-6 -top-6"
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ 
+                      opacity: [0.5, 0.8, 0.5],
+                      scale: [1, 1.3, 1],
+                      rotate: [0, 180, 360]
+                    }}
+                    transition={{ 
+                      duration: 3,
+                      repeat: Infinity,
+                    }}
+                  >
+                    <svg viewBox="0 0 100 100" className="w-full h-full">
+                      <polygon 
+                        points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" 
+                        fill="none" 
+                        stroke={app.glowColor}
+                        strokeWidth="2"
+                        opacity="0.6"
+                      />
+                    </svg>
+                  </motion.div>
+
+                  {/* Inner rotating circle */}
+                  <motion.div
+                    className="absolute w-20 h-20 -left-4 -top-4 rounded-full border border-white/30"
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  />
+                </>
+              )}
+
+              {/* Holographic glow */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl blur-xl"
+                style={{ 
+                  background: showEffect ? app.glowColor : 'transparent',
+                  width: '70px',
+                  height: '70px',
+                  left: '-11px',
+                  top: '-11px'
+                }}
+                animate={showEffect ? {
+                  opacity: [0.4, 0.8, 0.4],
+                } : { opacity: 0 }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+
+              {/* Icon container with tech border */}
+              <div className="relative w-12 h-12 flex items-center justify-center">
+                {/* Corner accents */}
+                {showEffect && (
+                  <>
+                    <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-cyan-400" />
+                    <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-cyan-400" />
+                    <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-cyan-400" />
+                    <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-cyan-400" />
+                  </>
+                )}
+                
+                {/* Main icon */}
+                <div className={`relative w-full h-full flex items-center justify-center rounded-xl bg-gradient-to-br ${app.color} shadow-2xl ${showEffect ? 'border-2 border-white/50' : 'border border-white/20'}`}>
+                  <app.Icon 
+                    className="w-6 h-6 text-white"
+                    strokeWidth={2.5}
+                  />
+                </div>
+              </div>
+
+              {/* Connection beam to core */}
+              {isLit && (
+                <motion.div
+                  className="absolute left-6 top-6 origin-top-left z-0"
+                  style={{
+                    width: '2px',
+                    height: `${Math.sqrt((position.x) ** 2 + (position.y) ** 2)}px`,
+                    transform: `rotate(${Math.atan2(position.y, position.x) * (180 / Math.PI) + 90}deg)`,
+                  }}
+                  initial={{ scaleY: 0, opacity: 0 }}
+                  animate={{ scaleY: 1, opacity: 0.6 }}
+                  exit={{ scaleY: 0, opacity: 0 }}
+                >
+                  <div className={`w-full h-full bg-gradient-to-b ${app.color}`} />
+                  
+                  {/* Data pulse traveling */}
+                  <motion.div
+                    className="absolute w-2 h-2 rounded-full left-1/2 transform -translate-x-1/2"
+                    style={{ background: app.glowColor }}
+                    animate={{
+                      y: ['0%', '100%'],
+                      opacity: [1, 0],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+                </motion.div>
+              )}
+
+              {/* Holographic name display */}
+              {showEffect && (
+                <motion.div
+                  className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 whitespace-nowrap"
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -5 }}
+                >
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-cyan-500 blur-lg opacity-50" />
+                    <span className="relative text-white text-xs font-mono tracking-wider px-2 py-1 border border-cyan-500/50 bg-black/80 rounded">
+                      {app.name}
+                    </span>
+                  </div>
+                </motion.div>
+              )}
+            </motion.div>
+          );
+        })}
+      </AnimatePresence>
+
+      {/* Scan line effect */}
+      <motion.div
+        className="absolute left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-50"
+        animate={{
+          top: ['0%', '100%'],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+
+      {/* Interactive prompt */}
+      <AnimatePresence>
+        {showCore && litIcons.size === 0 && (
+          <motion.div
+            className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-center z-40"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ delay: 3 }}
+          >
+            <motion.div
+              animate={{ 
+                opacity: [0.5, 1, 0.5],
+                textShadow: [
+                  '0 0 10px rgba(6, 182, 212, 0.5)',
+                  '0 0 20px rgba(6, 182, 212, 0.8)',
+                  '0 0 10px rgba(6, 182, 212, 0.5)',
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-cyan-400 text-lg font-mono tracking-widest"
+            >
+              [ DIGITAL FLUENCY THROUGH ENGLISH LITERACY ]
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default BookAnimationPage;
