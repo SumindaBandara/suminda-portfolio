@@ -173,6 +173,7 @@ const BookAnimationPage = () => {
   const [showIcons, setShowIcons] = useState(false);
   const [litIcons, setLitIcons] = useState(new Set());
   const [hoveredIcon, setHoveredIcon] = useState(null);
+  const [showThankYou, setShowThankYou] = useState(false);
 
   useEffect(() => {
     const coreTimer = setTimeout(() => setShowCore(true), 500);
@@ -192,6 +193,14 @@ const BookAnimationPage = () => {
       } else {
         newSet.add(index);
       }
+      
+      // Check if all icons are lit
+      if (newSet.size === appIcons.length) {
+        setTimeout(() => setShowThankYou(true), 500);
+      } else {
+        setShowThankYou(false);
+      }
+      
       return newSet;
     });
   };
@@ -473,7 +482,7 @@ const BookAnimationPage = () => {
 
       {/* Interactive prompt */}
       <AnimatePresence>
-        {showCore && litIcons.size === 0 && (
+        {showCore && litIcons.size === 0 && !showThankYou && (
           <motion.div
             className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-center z-40"
             initial={{ opacity: 0, y: 20 }}
@@ -493,9 +502,250 @@ const BookAnimationPage = () => {
               transition={{ duration: 2, repeat: Infinity }}
               className="text-cyan-400 text-lg font-mono tracking-widest"
             >
-              [ DIGITAL FLUENCY THROUGH ENGLISH LITERACY ]
+              [ DIGITAL FLUENCY THROUGH ENGLISH LETERACY ]
             </motion.div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Thank You Message - Epic Reveal */}
+      <AnimatePresence>
+        {showThankYou && (
+          <>
+            {/* Explosion effect overlay */}
+            <motion.div
+              className="absolute inset-0 z-50 bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-pink-500/20"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            />
+
+            {/* Expanding circles animation */}
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={`circle-${i}`}
+                className="absolute left-1/2 top-1/2 rounded-full border-2 border-cyan-400 z-50"
+                initial={{ 
+                  width: 0, 
+                  height: 0,
+                  x: '-50%',
+                  y: '-50%',
+                  opacity: 0.8 
+                }}
+                animate={{ 
+                  width: `${(i + 1) * 400}px`,
+                  height: `${(i + 1) * 400}px`,
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 2,
+                  delay: i * 0.1,
+                  ease: "easeOut"
+                }}
+              />
+            ))}
+
+            {/* Particle burst */}
+            {[...Array(50)].map((_, i) => {
+              const angle = (i / 50) * Math.PI * 2;
+              const distance = 200 + Math.random() * 300;
+              return (
+                <motion.div
+                  key={`burst-${i}`}
+                  className="absolute left-1/2 top-1/2 w-2 h-2 rounded-full z-50"
+                  style={{
+                    background: `hsl(${Math.random() * 360}, 80%, 60%)`
+                  }}
+                  initial={{ 
+                    x: 0,
+                    y: 0,
+                    opacity: 1,
+                    scale: 0
+                  }}
+                  animate={{ 
+                    x: Math.cos(angle) * distance,
+                    y: Math.sin(angle) * distance,
+                    opacity: 0,
+                    scale: [0, 1.5, 0]
+                  }}
+                  transition={{
+                    duration: 2,
+                    delay: i * 0.01,
+                    ease: "easeOut"
+                  }}
+                />
+              );
+            })}
+
+            {/* Main Thank You Container */}
+            <motion.div
+              className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 text-center"
+              initial={{ scale: 0, rotateY: -180, opacity: 0 }}
+              animate={{ scale: 1, rotateY: 0, opacity: 1 }}
+              exit={{ scale: 0, rotateY: 180, opacity: 0 }}
+              transition={{ 
+                duration: 1, 
+                delay: 0.5,
+                type: "spring",
+                stiffness: 100
+              }}
+            >
+              {/* Holographic frame */}
+              <div className="relative">
+                {/* Corner decorations */}
+                <motion.div
+                  className="absolute -top-8 -left-8 w-16 h-16 border-t-4 border-l-4 border-cyan-400"
+                  initial={{ opacity: 0, x: 20, y: 20 }}
+                  animate={{ opacity: 1, x: 0, y: 0 }}
+                  transition={{ delay: 1 }}
+                />
+                <motion.div
+                  className="absolute -top-8 -right-8 w-16 h-16 border-t-4 border-r-4 border-purple-400"
+                  initial={{ opacity: 0, x: -20, y: 20 }}
+                  animate={{ opacity: 1, x: 0, y: 0 }}
+                  transition={{ delay: 1.1 }}
+                />
+                <motion.div
+                  className="absolute -bottom-8 -left-8 w-16 h-16 border-b-4 border-l-4 border-pink-400"
+                  initial={{ opacity: 0, x: 20, y: -20 }}
+                  animate={{ opacity: 1, x: 0, y: 0 }}
+                  transition={{ delay: 1.2 }}
+                />
+                <motion.div
+                  className="absolute -bottom-8 -right-8 w-16 h-16 border-b-4 border-r-4 border-cyan-400"
+                  initial={{ opacity: 0, x: -20, y: -20 }}
+                  animate={{ opacity: 1, x: 0, y: 0 }}
+                  transition={{ delay: 1.3 }}
+                />
+
+                {/* Glowing background panel */}
+                <motion.div
+                  className="relative px-16 py-12 bg-black/80 backdrop-blur-xl border-2 border-cyan-500/50 rounded-2xl"
+                  animate={{
+                    boxShadow: [
+                      '0 0 30px rgba(6, 182, 212, 0.3)',
+                      '0 0 60px rgba(168, 85, 247, 0.5)',
+                      '0 0 30px rgba(6, 182, 212, 0.3)',
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  {/* "THANK YOU" text */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.4 }}
+                  >
+                    <motion.h1 
+                      className="text-7xl font-bold font-mono mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+                      animate={{
+                        backgroundPosition: ['0%', '100%', '0%'],
+                      }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                      style={{
+                        backgroundSize: '200% 100%',
+                        textShadow: '0 0 30px rgba(6, 182, 212, 0.5)'
+                      }}
+                    >
+                      THANK YOU
+                    </motion.h1>
+                  </motion.div>
+
+                  {/* Subtitle with typing effect */}
+                  <motion.div
+                    className="text-cyan-300 text-xl font-mono tracking-wider"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.8 }}
+                  >
+                    <motion.span
+                      animate={{
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      [ ALL SYSTEMS ACTIVATED ]
+                    </motion.span>
+                  </motion.div>
+
+                  {/* Decorative line */}
+                  <motion.div
+                    className="mt-6 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 2, duration: 0.8 }}
+                  />
+
+                  {/* Success message */}
+                  <motion.p
+                    className="mt-6 text-purple-300 text-lg font-light"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 2.2 }}
+                  >
+                    Connection Established Successfully
+                  </motion.p>
+
+                  {/* Floating icons around message */}
+                  {[...Array(8)].map((_, i) => {
+                    const angle = (i / 8) * Math.PI * 2;
+                    const RandomIcon = appIcons[i].Icon;
+                    return (
+                      <motion.div
+                        key={`float-${i}`}
+                        className="absolute"
+                        style={{
+                          left: '50%',
+                          top: '50%',
+                        }}
+                        initial={{ x: 0, y: 0, opacity: 0 }}
+                        animate={{
+                          x: Math.cos(angle) * 150,
+                          y: Math.sin(angle) * 150,
+                          opacity: [0, 1, 1],
+                          rotate: 360,
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          delay: 1.5 + i * 0.1,
+                        }}
+                      >
+                        <motion.div
+                          className={`w-8 h-8 rounded-lg bg-gradient-to-br ${appIcons[i].color} flex items-center justify-center`}
+                          animate={{
+                            y: [0, -10, 0],
+                            rotate: [0, 10, -10, 0],
+                          }}
+                          transition={{
+                            duration: 2,
+                            delay: 2 + i * 0.2,
+                            repeat: Infinity,
+                          }}
+                        >
+                          <RandomIcon className="w-4 h-4 text-white" />
+                        </motion.div>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+
+                {/* Scanning lines effect */}
+                <motion.div
+                  className="absolute left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
+                  animate={{
+                    top: ['0%', '100%'],
+                  }}
+                  transition={{
+                    duration: 2,
+                    delay: 1,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                />
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </div>
