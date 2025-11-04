@@ -242,6 +242,130 @@ const BookAnimationPage = () => {
         }}
       />
 
+      {/* LEFT SIDE CONTENT */}
+      <motion.div
+        className="absolute left-8 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 2 }}
+      >
+        <div className="flex flex-col items-center space-y-4">
+          {/* Logo Container - Replace with your logo */}
+          <motion.div
+            className="w-32 h-32 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 p-1 mb-4"
+            animate={{
+              boxShadow: [
+                '0 0 20px rgba(6, 182, 212, 0.5)',
+                '0 0 40px rgba(168, 85, 247, 0.8)',
+                '0 0 20px rgba(6, 182, 212, 0.5)',
+              ]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
+              <img src="/assets/gemini2.png" alt="Logo" className="w-24 h-24 object-contain" />
+            </div>
+          </motion.div>
+
+          {/* Text Content */}
+          <motion.div
+            className="text-center space-y-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 2.5 }}
+          >
+            <motion.p 
+              className="text-cyan-400 text-xl font-bold tracking-wider"
+              animate={{
+                textShadow: [
+                  '0 0 10px rgba(6, 182, 212, 0.5)',
+                  '0 0 20px rgba(6, 182, 212, 0.8)',
+                  '0 0 10px rgba(6, 182, 212, 0.5)',
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              "English Day"
+            </motion.p>
+            <p className="text-purple-400 text-2xl font-bold">2025</p>
+            <p className="text-cyan-300 text-sm font-light leading-relaxed max-w-[200px]">
+              Pulathisipura National<br />College Of Education
+            </p>
+            <p className="text-purple-300 text-lg font-semibold">"21st Batch"</p>
+          </motion.div>
+
+          {/* Decorative lines */}
+          <motion.div
+            className="w-32 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1, delay: 3 }}
+          />
+        </div>
+      </motion.div>
+
+      {/* RIGHT SIDE CONTENT */}
+      <motion.div
+        className="absolute right-8 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 2 }}
+      >
+        <div className="flex flex-col items-center space-y-4">
+          {/* Logo Container - Replace with your logo */}
+          <motion.div
+            className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 p-1 mb-4"
+            animate={{
+              boxShadow: [
+                '0 0 20px rgba(168, 85, 247, 0.5)',
+                '0 0 40px rgba(236, 72, 153, 0.8)',
+                '0 0 20px rgba(168, 85, 247, 0.5)',
+              ]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
+              <img src="/assets/gemini2.png" alt="Logo" className="w-24 h-24 object-contain" />
+            </div>
+          </motion.div>
+
+          {/* Text Content */}
+          <motion.div
+            className="text-center space-y-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 2.5 }}
+          >
+            <motion.p 
+              className="text-cyan-400 text-xl font-bold tracking-wider"
+              animate={{
+                textShadow: [
+                  '0 0 10px rgba(6, 182, 212, 0.5)',
+                  '0 0 20px rgba(6, 182, 212, 0.8)',
+                  '0 0 10px rgba(6, 182, 212, 0.5)',
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              "English Day"
+            </motion.p>
+            <p className="text-purple-400 text-2xl font-bold">2025</p>
+            <p className="text-cyan-300 text-sm font-light leading-relaxed max-w-[200px]">
+              Pulathisipura National<br />College Of Education
+            </p>
+            <p className="text-purple-300 text-lg font-semibold">"21st Batch"</p>
+          </motion.div>
+
+          {/* Decorative lines */}
+          <motion.div
+            className="w-32 h-0.5 bg-gradient-to-r from-transparent via-purple-400 to-transparent"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1, delay: 3 }}
+          />
+        </div>
+      </motion.div>
+
       {/* Animated circuit lines */}
       {[...Array(15)].map((_, i) => (
         <CircuitLine key={`circuit-${i}`} delay={i * 0.3} />
