@@ -784,7 +784,7 @@ const BookAnimationPage = () => {
                         textShadow: '0 0 30px rgba(6, 182, 212, 0.5)'
                       }}
                     >
-                      Moda Sulari🐮
+                      Thank you
                     </motion.h1>
                   </motion.div>
 
