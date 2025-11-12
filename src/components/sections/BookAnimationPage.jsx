@@ -21,44 +21,41 @@ import {
   Heart,
   Bell,
   Users,
-  MapPin,
-  Calendar,
-  Clock,
-  Zap,
-  Star,
   Globe,
   Bookmark
 } from 'lucide-react';
 
-// 27 Social media and trendy app icons with tech-inspired colors
+// 24 Social media and trendy app icons with tech-inspired colors (perfectly arranged in 3 rings: 6+8+10)
 const appIcons = [
+  // Inner ring - 6 icons
   { Icon: Facebook, color: 'from-blue-500 to-blue-700', name: 'Facebook', glowColor: '#3b82f6' },
   { Icon: Instagram, color: 'from-pink-500 via-purple-500 to-orange-500', name: 'Instagram', glowColor: '#ec4899' },
-  { Icon: Twitter, color: 'from-sky-400 to-blue-500', name: 'Twitter', glowColor: '#38bdf8' },
   { Icon: Youtube, color: 'from-red-500 to-red-700', name: 'YouTube', glowColor: '#ef4444' },
-  { Icon: Linkedin, color: 'from-blue-600 to-blue-800', name: 'LinkedIn', glowColor: '#2563eb' },
+  { Icon: Twitter, color: 'from-sky-400 to-blue-500', name: 'Twitter', glowColor: '#38bdf8' },
   { Icon: MessageCircle, color: 'from-green-400 to-green-600', name: 'WhatsApp', glowColor: '#22c55e' },
+  { Icon: TrendingUp, color: 'from-amber-400 to-orange-500', name: 'Trending', glowColor: '#fbbf24' },
+  
+  // Middle ring - 8 icons
+  { Icon: Linkedin, color: 'from-blue-600 to-blue-800', name: 'LinkedIn', glowColor: '#2563eb' },
   { Icon: Send, color: 'from-blue-400 to-sky-500', name: 'Telegram', glowColor: '#60a5fa' },
   { Icon: Music2, color: 'from-green-500 to-green-700', name: 'Spotify', glowColor: '#22c55e' },
   { Icon: Camera, color: 'from-yellow-400 to-pink-500', name: 'Snapchat', glowColor: '#facc15' },
-  { Icon: ShoppingBag, color: 'from-orange-400 to-red-500', name: 'Shopping', glowColor: '#fb923c' },
   { Icon: PlayCircle, color: 'from-purple-500 to-pink-600', name: 'TikTok', glowColor: '#a855f7' },
-  { Icon: Gamepad2, color: 'from-indigo-500 to-purple-600', name: 'Gaming', glowColor: '#6366f1' },
   { Icon: Mail, color: 'from-cyan-400 to-blue-500', name: 'Email', glowColor: '#22d3ee' },
   { Icon: Video, color: 'from-rose-500 to-pink-600', name: 'Video', glowColor: '#f43f5e' },
+  { Icon: Heart, color: 'from-red-400 to-rose-600', name: 'Favorites', glowColor: '#f87171' },
+  
+  // Outer ring - 10 icons
+  { Icon: Gamepad2, color: 'from-indigo-500 to-purple-600', name: 'Gaming', glowColor: '#6366f1' },
+  { Icon: ShoppingBag, color: 'from-orange-400 to-red-500', name: 'Shopping', glowColor: '#fb923c' },
   { Icon: Phone, color: 'from-emerald-400 to-teal-500', name: 'Phone', glowColor: '#34d399' },
   { Icon: Share2, color: 'from-violet-500 to-purple-600', name: 'Share', glowColor: '#8b5cf6' },
-  { Icon: TrendingUp, color: 'from-amber-400 to-orange-500', name: 'Trending', glowColor: '#fbbf24' },
-  { Icon: Heart, color: 'from-red-400 to-rose-600', name: 'Favorites', glowColor: '#f87171' },
   { Icon: Bell, color: 'from-yellow-400 to-amber-500', name: 'Notifications', glowColor: '#facc15' },
   { Icon: Users, color: 'from-blue-400 to-indigo-500', name: 'Community', glowColor: '#60a5fa' },
-  { Icon: MapPin, color: 'from-red-500 to-pink-600', name: 'Location', glowColor: '#ef4444' },
-  { Icon: Calendar, color: 'from-purple-400 to-violet-500', name: 'Calendar', glowColor: '#c084fc' },
-  { Icon: Clock, color: 'from-teal-400 to-cyan-500', name: 'Time', glowColor: '#2dd4bf' },
-  { Icon: Zap, color: 'from-yellow-300 to-yellow-500', name: 'Energy', glowColor: '#fde047' },
-  { Icon: Star, color: 'from-amber-400 to-yellow-500', name: 'Featured', glowColor: '#fbbf24' },
   { Icon: Globe, color: 'from-blue-500 to-cyan-500', name: 'Web', glowColor: '#3b82f6' },
-  { Icon: Bookmark, color: 'from-pink-400 to-rose-500', name: 'Saved', glowColor: '#f472b6' }
+  { Icon: Bookmark, color: 'from-pink-400 to-rose-500', name: 'Saved', glowColor: '#f472b6' },
+  { Icon: Music2, color: 'from-purple-400 to-indigo-500', name: 'Music', glowColor: '#a78bfa' },
+  { Icon: Camera, color: 'from-emerald-400 to-cyan-500', name: 'Photos', glowColor: '#34d399' }
 ];
 
 // Digital particles for tech atmosphere
@@ -188,40 +185,55 @@ const BookAnimationPage = () => {
   const handleIconInteraction = (index) => {
     setLitIcons(prev => {
       const newSet = new Set(prev);
-      if (newSet.has(index)) {
-        newSet.delete(index);
-      } else {
-        newSet.add(index);
-      }
+      // Only add, never remove
+      newSet.add(index);
       
       // Check if all icons are lit
       if (newSet.size === appIcons.length) {
         setTimeout(() => setShowThankYou(true), 500);
-      } else {
-        setShowThankYou(false);
       }
       
       return newSet;
     });
   };
 
-  // Calculate spiral formation positions - better organized and responsive
+  // Calculate positions with maximum spacing - 3 rings (6+8+10 = 24 icons with generous gaps)
   const getIconPosition = (index) => {
     const total = appIcons.length;
-    const ringsCount = 3; // Number of concentric rings
-    const iconsPerRing = Math.ceil(total / ringsCount);
     
-    // Determine which ring this icon belongs to
-    const ring = Math.floor(index / iconsPerRing);
-    const indexInRing = index % iconsPerRing;
-    const iconsInThisRing = Math.min(iconsPerRing, total - ring * iconsPerRing);
+    // Define ring structure: 6 icons in ring 1, 8 in ring 2, 10 in ring 3
+    let ring, indexInRing, iconsInThisRing;
     
-    // Calculate angle for even distribution
+    if (index < 6) {
+      ring = 0;
+      indexInRing = index;
+      iconsInThisRing = 6;
+    } else if (index < 14) {
+      ring = 1;
+      indexInRing = index - 6;
+      iconsInThisRing = 8;
+    } else {
+      ring = 2;
+      indexInRing = index - 14;
+      iconsInThisRing = 10;
+    }
+    
+    // Calculate angle for even distribution in each ring
     const angle = (indexInRing / iconsInThisRing) * Math.PI * 2 - Math.PI / 2;
     
-    // Radius based on ring number (responsive to screen size)
-    const baseRadius = Math.min(window.innerWidth, window.innerHeight) * 0.15;
-    const radius = baseRadius + (ring * baseRadius * 0.8);
+    // Maximum spacing using full available screen space
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const screenSize = Math.min(screenWidth, screenHeight);
+    
+    // Use much larger base radius to fill the screen
+    const baseRadius = screenSize * 0.13; // Increased base radius
+    
+    // Much larger spacing multipliers to use full screen space
+    const radiusMultipliers = [1, 2.2, 3.4]; // Dramatically increased gaps between rings
+    
+    // Allow icons to use nearly full screen width (up to 45% from center)
+    const radius = Math.min(baseRadius * radiusMultipliers[ring], screenSize * 0.45);
     
     return {
       x: Math.cos(angle) * radius,
@@ -772,7 +784,7 @@ const BookAnimationPage = () => {
                         textShadow: '0 0 30px rgba(6, 182, 212, 0.5)'
                       }}
                     >
-                      THANK YOU
+                      Moda Sulari🐮
                     </motion.h1>
                   </motion.div>
 
@@ -789,7 +801,7 @@ const BookAnimationPage = () => {
                       }}
                       transition={{ duration: 1.5, repeat: Infinity }}
                     >
-                      [ ALL SYSTEMS ACTIVATED ]
+                      [SYSTEMS ACTIVATED]
                     </motion.span>
                   </motion.div>
 
