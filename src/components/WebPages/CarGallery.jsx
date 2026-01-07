@@ -446,7 +446,7 @@ export default function CarGalleryLanding() {
             {/* Left Car */}
             <div className="relative w-1/3 max-w-[260px] animate-slide-in-left hover:-translate-y-4 hover:scale-110 transition-all duration-500 cursor-pointer">
               <img
-                src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?w=600&q=80"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS6Fce9ucDm4OLU10DdFvpn4xUWuyqNkecSw&s"
                 alt="Luxury Car"
                 className="w-full drop-shadow-[0_40px_80px_rgba(0,0,0,0.9)]"
               />
@@ -456,7 +456,7 @@ export default function CarGalleryLanding() {
             {/* Center Featured Car */}
             <div className="relative w-1/3 max-w-[320px] -mt-10 animate-slide-in-up hover:-translate-y-6 hover:scale-110 transition-all duration-500 cursor-pointer">
               <img
-                src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&q=80"
+                src="https://www.shutterstock.com/image-vector/front-car-silhouette-rear-white-600nw-2404578461.jpg"
                 alt="Featured Car"
                 className="w-full drop-shadow-[0_50px_120px_rgba(0,0,0,1)]"
               />
@@ -470,7 +470,7 @@ export default function CarGalleryLanding() {
             {/* Right Car */}
             <div className="relative w-1/3 max-w-[260px] animate-slide-in-right hover:-translate-y-4 hover:scale-110 transition-all duration-500 cursor-pointer">
               <img
-                src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=80"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVAppyJj7tCM6-nh_tC-rlRXCjECVLaIAgBA&s"
                 alt="Premium Car"
                 className="w-full drop-shadow-[0_40px_80px_rgba(0,0,0,0.9)]"
               />
