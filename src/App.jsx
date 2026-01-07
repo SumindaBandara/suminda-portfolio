@@ -12,6 +12,8 @@ import ProjectsPage from './components/sections/ProjectsPage'; // ✅ import the
 
 import BookAnimationPage from './components/sections/BookAnimationPage';
 
+import CarGallery from './components/WebPages/CarGallery';
+
 function App() {
   return (
     <Router>
@@ -39,6 +41,8 @@ function App() {
           
 
           <Route path="/animation" element={<BookAnimationPage />} />
+          <Route path="/CarGallery" element={<CarGallery />} />
+          
         </Routes>
 
        
