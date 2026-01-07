@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Package, Truck, Wrench, MapPin, ArrowRight, Star, Globe, Shield, Clock, Menu, X, ChevronRight } from 'lucide-react';
 
-export default function CarGallery() {
+export default function CarGalleryLanding() {
   const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,8 +41,8 @@ export default function CarGallery() {
   ];
 
   const galleryImages = [
-    { url: 'https://lh3.googleusercontent.com/p/AF1QipPuDBGb8M3EaE_58a_V5UqfS1VscJPNCer8gSdF=s1360-w1360-h1020-rw', title: 'Luxury Sports Car', category: 'Import' },
-    { url: 'https://lh3.googleusercontent.com/p/AF1QipPuDBGb8M3EaE_58a_V5UqfS1VscJPNCer8gSdF=s1360-w1360-h1020-rw', title: 'Premium SUV', category: 'Export' },
+    { url: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80', title: 'Luxury Sports Car', category: 'Import' },
+    { url: 'https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=800&q=80', title: 'Premium SUV', category: 'Export' },
     { url: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80', title: 'Classic Collection', category: 'Import' },
     { url: 'https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&q=80', title: 'Modern Sedan', category: 'Export' },
     { url: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80', title: 'Sports Performance', category: 'Import' },
@@ -380,6 +380,116 @@ export default function CarGallery() {
         </div>
       </section>
 
+      {/* Showcase Section - Premium Animated Design */}
+      <section className="relative min-h-screen bg-black overflow-hidden px-4 sm:px-6">
+        {/* Aurora / Glow Background */}
+        <div className="absolute inset-0">
+          <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-600/30 blur-[160px] rounded-full animate-pulse-slow" />
+          <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-purple-600/20 blur-[160px] rounded-full animate-pulse-slow" style={{animationDelay: '1s'}} />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.15),transparent_60%)]" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto min-h-screen flex flex-col justify-between">
+          
+          {/* Top Content */}
+          <div className="pt-24 sm:pt-32 text-center space-y-6 z-20">
+            {/* Icon Badge */}
+            <div className="inline-flex flex-col items-center gap-4 animate-fade-in-down">
+              <div className="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center shadow-[0_0_40px_rgba(59,130,246,0.6)] hover:shadow-[0_0_60px_rgba(59,130,246,0.8)] transition-shadow duration-500">
+                <Truck className="w-12 h-12 text-blue-400" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white tracking-widest">
+                  CAR GALLERY
+                </h3>
+                <p className="text-blue-400 text-sm tracking-wider">KANDY</p>
+              </div>
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight animate-fade-in-up">
+              Find Your Next
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-gradient">
+                Premium Vehicle
+              </span>
+            </h1>
+
+            <p className="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
+              Hand-picked luxury vehicles with unmatched quality and performance.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap justify-center gap-4 mt-8 animate-fade-in" style={{animationDelay: '0.4s'}}>
+              <a
+                href="tel:+94777003092"
+                className="group inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.5)]"
+              >
+                <Phone className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+                Book Test Drive
+              </a>
+
+              <a
+                href="#gallery"
+                className="inline-flex items-center gap-3 border border-white/20 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition backdrop-blur-sm"
+              >
+                View Collection
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Car Showcase */}
+          <div
+            className="relative z-10 flex justify-center items-end gap-4 sm:gap-6 lg:gap-10 pb-16 mt-16"
+          >
+            {/* Left Car */}
+            <div className="relative w-1/3 max-w-[260px] animate-slide-in-left hover:-translate-y-4 hover:scale-110 transition-all duration-500 cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?w=600&q=80"
+                alt="Luxury Car"
+                className="w-full drop-shadow-[0_40px_80px_rgba(0,0,0,0.9)]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-lg" />
+            </div>
+
+            {/* Center Featured Car */}
+            <div className="relative w-1/3 max-w-[320px] -mt-10 animate-slide-in-up hover:-translate-y-6 hover:scale-110 transition-all duration-500 cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&q=80"
+                alt="Featured Car"
+                className="w-full drop-shadow-[0_50px_120px_rgba(0,0,0,1)]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-500/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-lg" />
+              {/* Featured Badge */}
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-600 to-blue-500 px-4 py-1 rounded-full text-white text-sm font-bold shadow-lg animate-bounce-slow">
+                FEATURED
+              </div>
+            </div>
+
+            {/* Right Car */}
+            <div className="relative w-1/3 max-w-[260px] animate-slide-in-right hover:-translate-y-4 hover:scale-110 transition-all duration-500 cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=80"
+                alt="Premium Car"
+                className="w-full drop-shadow-[0_40px_80px_rgba(0,0,0,0.9)]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-lg" />
+            </div>
+          </div>
+
+          {/* Footer Brand */}
+          <div className="pb-6 flex justify-center z-20 animate-fade-in" style={{animationDelay: '0.6s'}}>
+            <div className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+              <Phone className="w-5 h-5 text-blue-400" />
+              <span className="font-semibold tracking-wide">
+                Car Gallery Kandy
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section id="contact" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-gradient-to-r from-blue-600 to-blue-500 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -440,7 +550,8 @@ export default function CarGallery() {
         </div>
       </footer>
 
-      <style jsx>{`
+      {/* Global Styles */}
+      <style dangerouslySetInnerHTML={{__html: `
         @keyframes fade-in {
           from { opacity: 0; }
           to { opacity: 1; }
@@ -467,6 +578,68 @@ export default function CarGallery() {
           0%, 100% { text-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
           50% { text-shadow: 0 0 40px rgba(59, 130, 246, 0.8); }
         }
+        @keyframes fade-in-down {
+          from {
+            opacity: 0;
+            transform: translateY(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes slide-in-left {
+          from {
+            opacity: 0;
+            transform: translateX(-100px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        @keyframes slide-in-right {
+          from {
+            opacity: 0;
+            transform: translateX(100px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        @keyframes slide-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(100px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.5; }
+        }
         .animate-fade-in {
           animation: fade-in 1s ease-out;
         }
@@ -482,7 +655,32 @@ export default function CarGallery() {
         .animate-pulse-glow {
           animation: pulse-glow 2s ease-in-out infinite;
         }
-      `}</style>
+        .animate-fade-in-down {
+          animation: fade-in-down 1s ease-out;
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 1s ease-out;
+        }
+        .animate-slide-in-left {
+          animation: slide-in-left 1s ease-out;
+        }
+        .animate-slide-in-right {
+          animation: slide-in-right 1s ease-out;
+        }
+        .animate-slide-in-up {
+          animation: slide-in-up 1s ease-out;
+        }
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 2s ease-in-out infinite;
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 4s ease-in-out infinite;
+        }
+      `}} />
     </div>
   );
 }
