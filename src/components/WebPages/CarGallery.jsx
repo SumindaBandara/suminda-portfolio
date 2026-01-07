@@ -462,7 +462,7 @@ export default function CarGalleryLanding() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-500/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-lg" />
               {/* Featured Badge */}
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-600 to-blue-500 px-4 py-1 rounded-full text-white text-sm font-bold shadow-lg animate-bounce-slow">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-601 to-blue-500 px-4 py-1 rounded-full text-white text-sm font-bold shadow-lg animate-bounce-slow">
                 FEATURED
               </div>
             </div>
