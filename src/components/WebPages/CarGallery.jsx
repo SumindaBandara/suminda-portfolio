@@ -550,7 +550,8 @@ export default function CarGallery() {
         </div>
       </footer>
 
-      <style jsx>{`
+      {/* Global Styles */}
+      <style dangerouslySetInnerHTML={{__html: `
         @keyframes fade-in {
           from { opacity: 0; }
           to { opacity: 1; }
@@ -679,7 +680,7 @@ export default function CarGallery() {
         .animate-pulse-slow {
           animation: pulse-slow 4s ease-in-out infinite;
         }
-      `}</style>
+      `}} />
     </div>
   );
 }
