@@ -13,6 +13,7 @@ import ProjectsPage from './components/sections/ProjectsPage'; // ✅ import the
 import BookAnimationPage from './components/sections/BookAnimationPage';
 
 import CarGallery from './components/WebPages/CarGallery';
+import PlatinumCarSales from './components/WebPages/PlatinumCarSales';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
 
           <Route path="/animation" element={<BookAnimationPage />} />
           <Route path="/CarGallery" element={<CarGallery />} />
+          <Route path="/PlatinumCarSales" element={<PlatinumCarSales />} />
           
         </Routes>
 
