@@ -175,9 +175,11 @@ const CeyloneCarSale = () => {
               <div className="inline-block bg-red-600/20 border border-red-500 text-red-400 px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-slide-up backdrop-blur-sm">
                 🏆 Sri Lanka's Trusted Dealership
               </div>
-              <h2 className="text-5xl- text-amber-50 md:text-7xl font-bold mb-6 animate-slide-up delay-200 leading-tight">
-                Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Dream Car</span><br />Awaits You
-              </h2>
+              <h2 className="text-4xl md:text-7xl font-bold mb-6 animate-slide-up delay-200 leading-tight text-white">
+                    Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Dream Car</span>
+                    <br />
+                    Awaits You
+                    </h2>
               <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-slide-up delay-400 leading-relaxed">
                 Brand new, reconditioned, and pre-owned vehicles with unbeatable service and transparency.
               </p>
