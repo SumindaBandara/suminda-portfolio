@@ -14,6 +14,8 @@ import BookAnimationPage from './components/sections/BookAnimationPage';
 
 import CarGallery from './components/WebPages/CarGallery';
 import PlatinumCarSales from './components/WebPages/PlatinumCarSales';
+import CeyloneCarSale from './components/WebPages/CeyloneCarSale';
+
 
 function App() {
   return (
@@ -43,7 +45,8 @@ function App() {
 
           <Route path="/animation" element={<BookAnimationPage />} />
           <Route path="/CarGallery" element={<CarGallery />} />
-          <Route path="/PlatinumCarSales" element={<PlatinumCarSales />} />
+          <Route path="/PlatinumCarSales" element={<PlatinumCarSales />} />CeyloneCarSale
+          <Route path="/CeyloneCarSale" element={<CeyloneCarSale />} />
           
         </Routes>
 
