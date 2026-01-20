@@ -591,10 +591,10 @@ const CeyloneCarSale = () => {
               </div>
               
               {/* Click to View/Directions Button */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold shadow-2xl transition-all transform group-hover:scale-110 flex items-center gap-2 z-10">
+              {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold shadow-2xl transition-all transform group-hover:scale-110 flex items-center gap-2 z-10">
                 <MapPin className="w-6 h-6" />
                 <span className="text-lg">View on Google Maps</span>
-              </div>
+              </div> */}
               
               {/* Hover Instruction */}
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center pointer-events-none">
