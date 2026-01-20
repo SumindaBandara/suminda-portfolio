@@ -537,7 +537,7 @@ const CeyloneCarSale = () => {
         {/* Map Section */}
         <div className="max-w-7xl mx-auto mt-16">
           <a 
-              href="https://goo.gl/maps/YOUR_MAP_LINK_HERE" 
+              href="https://www.google.com/maps/place/Ceylon+Car+Sales/data=!4m2!3m1!1s0x0:0x36602673b99ef2ab?sa=X&ved=1t:2428&ictx=111" 
               target="_blank"
               rel="noopener noreferrer"
               className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group block cursor-pointer"
