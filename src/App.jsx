@@ -15,6 +15,8 @@ import BookAnimationPage from './components/sections/BookAnimationPage';
 import CarGallery from './components/WebPages/CarGallery';
 import PlatinumCarSales from './components/WebPages/PlatinumCarSales';
 import CeyloneCarSale from './components/WebPages/CeyloneCarSale';
+import CORHoldingsSale from './components/WebPages/corholdings';
+import CORHoldings2 from './components/WebPages/corholdings2';
 
 
 function App() {
@@ -47,6 +49,10 @@ function App() {
           <Route path="/CarGallery" element={<CarGallery />} />
           <Route path="/PlatinumCarSales" element={<PlatinumCarSales />} />CeyloneCarSale
           <Route path="/CeyloneCarSale" element={<CeyloneCarSale />} />
+          <Route path="/CORHoldingsSale" element={<CORHoldingsSale />} />
+          <Route path="/CORHoldings2" element={<CORHoldings2 />} />
+          
+          
           
         </Routes>
 
