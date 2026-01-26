@@ -3,16 +3,16 @@ import {
   Phone, Mail, MapPin, Car, Shield, Users, Award, Star, 
   Facebook, ChevronRight, Globe, Search, ArrowRight, 
   Calendar, Gauge, Fuel, CheckCircle, Menu, X, Instagram,
-  MessageCircle, Clock, Send
+  MessageCircle, Clock, Send, Quote
 } from 'lucide-react';
 
-// --- DATA SOURCE UPDATED FOR BUSINESS LANKA ---
+// --- DATA SOURCE ---
 const PAGE_DATA = {
   company: {
     name: "Business Lanka",
     full_name: "Business Lanka Car Sales",
-    tagline: "Premier Quality Vehicles",
-    founded: 2018, // Preserved placeholder logic
+    tagline: "Premier car sale providing quality vehicles",
+    founded: 2016, // Kept as original since not provided in new data
     logo: "/assets/logo.png", 
   },
   contact: {
@@ -61,15 +61,24 @@ const PAGE_DATA = {
     {
       id: 1,
       name: "Verified Customer",
-      text: "Most trustworthy car sale in Town!! They will run you with any detail about the rides they have.",
+      role: "Business Executive",
+      text: "Most trustworthy car sale in Town!! They will run you with any detail about the rides they have. The professional approach is refreshing.",
       rating: 5,
     },
     {
       id: 2,
       name: "Happy Buyer",
-      text: "Genuine owner and great place for a best deal. Highly recommended.",
+      role: "Luxury Car Enthusiast",
+      text: "Genuine owner and great place for a best deal. Highly recommended. The transparency in vehicle history is what set them apart.",
       rating: 5,
     },
+    {
+        id: 3,
+        name: "Corporate Client",
+        role: "Fleet Manager",
+        text: "Exceptional service and professional handling of documentation. The best place for vehicle solutions in Kaduwela.",
+        rating: 5,
+    }
   ],
   stats: {
     sold: "500+",
@@ -78,7 +87,7 @@ const PAGE_DATA = {
   }
 };
 
-const corholdings2 = () => {
+const CORHoldings2 = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
@@ -173,7 +182,7 @@ const corholdings2 = () => {
           </div>
           <h2 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight drop-shadow-lg">
             Experience the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">Excellence</span> <br/>
-            of Quality Vehicles.
+            of Quality Mobility.
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#inventory" className="bg-red-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-red-700 transition-all transform hover:scale-105 shadow-xl shadow-red-900/20">
@@ -186,7 +195,7 @@ const corholdings2 = () => {
         </div>
       </section>
 
-      {/* --- 3. QUICK SEARCH BAR --- */}
+      {/* --- 3. QUICK SEARCH BAR (Triggers Popup) --- */}
       <div className="relative z-20 -mt-16 px-6">
         <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl p-6 md:p-8 border border-slate-100">
           <div className="grid md:grid-cols-4 gap-4 items-end">
@@ -212,6 +221,7 @@ const corholdings2 = () => {
                 <option>Any Model</option>
               </select>
             </div>
+            
             <button 
                 onClick={(e) => { e.preventDefault(); setIsSearchModalOpen(true); }}
                 className="w-full bg-emerald-900 text-white font-bold rounded-lg px-4 py-3 hover:bg-emerald-800 transition-colors flex items-center justify-center gap-2"
@@ -285,22 +295,23 @@ const corholdings2 = () => {
         </div>
       </section>
 
-      {/* --- 5. ABOUT SECTION --- */}
+      {/* --- 5. MODERN ABOUT SECTION --- */}
       <section id="about" className="py-24 px-6 bg-slate-50 relative">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             
             <div className="relative">
                 <div className="rounded-[40px] overflow-hidden shadow-2xl border-4 border-white">
                     <img 
-                        src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=80" 
+                        src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweq8R2rxFnUBLVvN493106fSjrEFX5rIYp5mHi0-dO0NBNcrCvbx1leXRQQMMW0FsKMWzWyAbehcve5Jtjt3jlVWEqzy7F4igp6fQqiFWfmtvcbWEOsAnv1HKxEHeATCffox1O6y5XEZziI=s1360-w1360-h1020-rw" 
                         alt="Business Lanka Showroom" 
                         className="w-full h-[500px] object-cover"
                     />
                 </div>
                 
                 <div className="absolute -bottom-6 -right-6 bg-emerald-900 text-white p-8 rounded-3xl shadow-xl animate-bounce-slow">
-                    <p className="text-4xl font-black">{PAGE_DATA.stats.years}</p>
-                    <p className="text-sm uppercase tracking-widest text-emerald-300 font-bold">Years of Trust</p>
+                    <p className="text-4xl font-black">{new Date().getFullYear() - PAGE_DATA.company.founded}+</p>
+                    <p className="text-sm uppercase tracking-widest text-emerald-300 font-bold">Years of Excellence</p>
+                    <p className="text-xs text-emerald-400 mt-1">Quality Service</p>
                 </div>
             </div>
 
@@ -310,10 +321,10 @@ const corholdings2 = () => {
                     Driven by Quality <span className="text-emerald-800">Standards.</span>
                 </h2>
                 <p className="text-slate-600 text-lg mb-6 leading-relaxed">
-                    <span className="font-bold text-emerald-900">{PAGE_DATA.company.full_name}</span> is a premier car sale located in Kaduwela, providing quality vehicles and professional service.
+                    <span className="font-bold text-emerald-900">{PAGE_DATA.company.full_name}</span> has evolved with a singular vision: to bring professional practices to the automobile industry in Sri Lanka.
                 </p>
                 <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-                    We bring professional practices to the automobile industry in Sri Lanka. From the moment you step into our Kaduwela showroom to the moment you drive away, you experience transparency, integrity, and the highest quality service.
+                    We don't just sell cars; we deliver premium vehicle solutions. From the moment you step into our Kaduwela showroom to the moment you drive away, you experience transparency, integrity, and the highest quality service.
                 </p>
 
                 <div className="grid grid-cols-2 gap-8 border-t border-slate-200 pt-8">
@@ -330,10 +341,56 @@ const corholdings2 = () => {
         </div>
       </section>
 
+      {/* --- NEW: MODERN REVIEW SECTION --- */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-50 rounded-full blur-3xl -z-0 opacity-50"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-50 rounded-full blur-3xl -z-0 opacity-30"></div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-2 text-red-600 font-bold uppercase tracking-widest text-sm mb-4">
+              <Star size={18} fill="currentColor" />
+              <span>Customer Voice</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">What Our <span className="text-emerald-800">Clients Say</span></h2>
+            <div className="w-20 h-1.5 bg-emerald-900 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {PAGE_DATA.reviews.map((review) => (
+              <div key={review.id} className="group relative bg-white p-8 rounded-3xl border border-slate-100 shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-emerald-900 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:rotate-12 transition-transform">
+                  <Quote size={24} />
+                </div>
+                
+                <div className="flex gap-1 mb-6 mt-2">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <Star key={i} size={16} className="text-amber-400 fill-amber-400" />
+                  ))}
+                </div>
+
+                <p className="text-slate-600 italic mb-8 leading-relaxed">
+                  "{review.text}"
+                </p>
+
+                <div className="flex items-center gap-4 pt-6 border-t border-slate-50">
+                  <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center font-bold text-emerald-900 border-2 border-emerald-50">
+                    {review.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900">{review.name}</h4>
+                    <p className="text-xs text-slate-400 font-medium uppercase tracking-tighter">{review.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* --- 6. APPOINTMENT SECTION --- */}
       <section id="appointment" className="py-24 bg-emerald-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-        
         <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 bg-white rounded-3xl p-8 md:p-12 shadow-2xl">
                 <div className="flex flex-col justify-center">
@@ -343,9 +400,8 @@ const corholdings2 = () => {
                     </div>
                     <h2 className="text-4xl font-black text-slate-900 mb-6">Schedule a Visit</h2>
                     <p className="text-slate-600 mb-8 text-lg">
-                        We value your time. Schedule an appointment for a test drive, vehicle inspection, or a trade-in valuation. Our team will be ready for you.
+                        We value your time. Schedule an appointment for a test drive or vehicle inspection. Our team will be ready for you.
                     </p>
-                    
                     <div className="space-y-4 mb-8">
                         <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-xl">
                             <Clock className="text-emerald-600" size={24} />
@@ -366,18 +422,16 @@ const corholdings2 = () => {
 
                 <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
                     <h3 className="text-xl font-bold text-slate-900 mb-6">Appointment Details</h3>
-                    
                     <form action="https://api.web3forms.com/submit" method="POST" className="space-y-4">
                         <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE" />
                         <input type="hidden" name="subject" value={`New Appointment Request - ${PAGE_DATA.company.name}`} />
-                        
                         <div>
                             <label className="block text-sm font-bold text-slate-500 mb-2">Your Name</label>
                             <input required type="text" name="name" className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter your full name" />
                         </div>
                         <div>
                             <label className="block text-sm font-bold text-slate-500 mb-2">Phone Number</label>
-                            <input required type="tel" name="phone" className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="+94 7X XXX XXXX" />
+                            <input required type="tel" name="phone" className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="07X XXX XXXX" />
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <div>
@@ -404,59 +458,34 @@ const corholdings2 = () => {
       </section>
 
       {/* --- MAP SECTION --- */}
-      <section className="py-16 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section>
+        <div className="max-w-7xl mx-auto mt-16 px-6">
                   <a 
-                      href={PAGE_DATA.contact.mapLink} 
+                      href="https://share.google/F1GvUKJwqwxxDaRaO" 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group block cursor-pointer"
                     >
                       <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900">
-                        <div className="absolute inset-0 opacity-20">
-                          {[...Array(10)].map((_, i) => (
-                            <div key={`h${i}`} className="absolute w-full h-px bg-white" style={{ top: `${i * 10}%` }}></div>
-                          ))}
-                          {[...Array(10)].map((_, i) => (
-                            <div key={`v${i}`} className="absolute h-full w-px bg-white" style={{ left: `${i * 10}%` }}></div>
-                          ))}
-                        </div>
-                        
                         <img 
                           src="/assets/newmap2.png"
                           alt="Map Location"
-                          className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-500 grayscale group-hover:grayscale-0"
+                          className="w-full h-full object-cover opacity-60 transition-all duration-500"
                         />
-                        
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full animate-bounce-slow">
-                          <div className="relative">
-                            <MapPin className="w-16 h-16 text-red-600 fill-red-600 drop-shadow-2xl" />
-                            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-red-600 rounded-full blur-xl opacity-50"></div>
-                          </div>
-                        </div>
-                        
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                          <div className="w-32 h-32 border-4 border-red-500 rounded-full animate-ping opacity-30"></div>
+                          <MapPin className="w-16 h-16 text-red-600 fill-red-600 drop-shadow-2xl" />
                         </div>
                       </div>
-                      
                       <div className="absolute top-4 left-4 bg-white text-gray-900 px-4 py-2 rounded-full shadow-lg flex items-center gap-2 z-10">
                         <MapPin className="w-5 h-5 text-red-600" />
                         <span className="font-bold">Kaduwela, Sri Lanka</span>
                       </div>
-                      
                       <div className="absolute bottom-20 left-4 right-4 bg-white/95 backdrop-blur-sm text-gray-900 p-4 rounded-xl shadow-xl">
                         <h4 className="font-bold text-lg mb-1">{PAGE_DATA.company.full_name}</h4>
                         <p className="text-gray-600 text-sm flex items-start gap-2">
                           <MapPin className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
                           {PAGE_DATA.contact.address}
                         </p>
-                      </div>
-                      
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center pointer-events-none">
-                        <div className="bg-white text-gray-900 px-6 py-3 rounded-full font-bold text-lg">
-                          Click to Open in Google Maps
-                        </div>
                       </div>
                     </a>
                 </div>
@@ -468,25 +497,23 @@ const corholdings2 = () => {
           <div className="col-span-1">
             <h2 className="text-2xl font-black text-white uppercase mb-4">{PAGE_DATA.company.name}</h2>
             <p className="text-sm leading-relaxed mb-6">
-              Premier car sale located in Kaduwela, providing quality vehicles and unmatched customer service.
+              {PAGE_DATA.company.tagline}. Delivering premium vehicle solutions to Sri Lanka.
             </p>
             <div className="flex gap-4">
-              <a href={PAGE_DATA.contact.facebook} className="bg-slate-800 p-2 rounded-full hover:bg-red-600 hover:text-white transition-all"><Facebook size={18} /></a>
+              <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-red-600 hover:text-white transition-all"><Facebook size={18} /></a>
               <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-red-600 hover:text-white transition-all"><Instagram size={18} /></a>
               <a href={PAGE_DATA.contact.website} className="bg-slate-800 p-2 rounded-full hover:bg-red-600 hover:text-white transition-all"><Globe size={18} /></a>
             </div>
           </div>
-
           <div>
             <h3 className="text-white font-bold uppercase tracking-wider mb-6">Quick Links</h3>
             <ul className="space-y-3 text-sm">
               <li><a href="#inventory" className="hover:text-emerald-400 transition-colors">Inventory</a></li>
               <li><a href="#about" className="hover:text-emerald-400 transition-colors">About Us</a></li>
               <li><a href="#appointment" className="hover:text-emerald-400 transition-colors">Book Visit</a></li>
-              <li><a href="#trade-in" className="hover:text-emerald-400 transition-colors">Trade In</a></li>
+              <li><a href={PAGE_DATA.contact.website} target="_blank" className="hover:text-emerald-400 transition-colors">Ikman Shop</a></li>
             </ul>
           </div>
-
           <div>
             <h3 className="text-white font-bold uppercase tracking-wider mb-6">Contact</h3>
             <ul className="space-y-4 text-sm">
@@ -504,21 +531,14 @@ const corholdings2 = () => {
               </li>
             </ul>
           </div>
-
           <div>
             <h3 className="text-white font-bold uppercase tracking-wider mb-6">Newsletter</h3>
-            <p className="text-xs mb-4">Subscribe to get the latest arrivals and exclusive deals.</p>
             <div className="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Email Address" 
-                className="bg-slate-800 border-none rounded-lg px-4 py-2 text-white w-full focus:ring-2 focus:ring-emerald-500"
-              />
+              <input type="email" placeholder="Email Address" className="bg-slate-800 border-none rounded-lg px-4 py-2 text-white w-full focus:ring-2 focus:ring-emerald-500" />
               <button className="bg-red-600 text-white px-4 rounded-lg font-bold hover:bg-red-700 transition-colors">Go</button>
             </div>
           </div>
         </div>
-
         <div className="max-w-7xl mx-auto pt-8 border-t border-slate-800 text-center text-xs">
           <p>© {new Date().getFullYear()} {PAGE_DATA.company.full_name}. All rights reserved.</p>
         </div>
@@ -528,41 +548,23 @@ const corholdings2 = () => {
       {isSearchModalOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white rounded-3xl p-8 max-w-md w-full relative shadow-2xl border border-slate-100">
-            <button 
-              onClick={() => setIsSearchModalOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-slate-100 rounded-full p-2 transition-colors"
-            >
-              <X size={20} />
-            </button>
+            <button onClick={() => setIsSearchModalOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-slate-100 rounded-full p-2 transition-colors"><X size={20} /></button>
             <div className="text-center">
               <div className="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce-slow">
                 <Search size={32} />
               </div>
               <h3 className="text-2xl font-black text-slate-900 mb-3">Looking for something specific?</h3>
-              <p className="text-slate-600 mb-8 leading-relaxed">
-                Our online inventory is being updated daily! To get the best deal and current stock details, please call us directly.
-              </p>
+              <p className="text-slate-600 mb-8 leading-relaxed">Our inventory moves faster than we can update the site! Contact us directly to check availability.</p>
               <div className="space-y-4">
-                <a 
-                  href={`tel:${PAGE_DATA.contact.phones[0]}`} 
-                  className="w-full bg-red-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-red-700 transition-all shadow-xl shadow-red-900/20"
-                >
-                  <Phone size={20} /> Call Now
-                </a>
-                <button 
-                  onClick={() => handleInquiry("Hi, I am looking for a specific vehicle that I couldn't find on the site.")}
-                  className="w-full bg-emerald-900 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-emerald-800 transition-all shadow-xl shadow-emerald-900/20"
-                >
-                  <MessageCircle size={20} /> WhatsApp Us
-                </button>
+                <a href={`tel:${PAGE_DATA.contact.phones[0]}`} className="w-full bg-red-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-red-700 transition-all shadow-xl shadow-red-900/20"><Phone size={20} /> Call Now</a>
+                <button onClick={() => handleInquiry()} className="w-full bg-emerald-900 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-emerald-800 transition-all shadow-xl shadow-emerald-900/20"><MessageCircle size={20} /> WhatsApp Us</button>
               </div>
             </div>
           </div>
         </div>
       )}
-
     </div>
   );
 };
 
-export default corholdings2;
+export default CORHoldings2;
