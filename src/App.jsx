@@ -50,7 +50,7 @@ function App() {
           <Route path="/PlatinumCarSales" element={<PlatinumCarSales />} />CeyloneCarSale
           <Route path="/CeyloneCarSale" element={<CeyloneCarSale />} />
           <Route path="/CORHoldingsSale" element={<CORHoldingsSale />} />
-          <Route path="/CORHoldings2" element={<CORHoldings2 />} />
+          <Route path="/BusinessLanka" element={<CORHoldings2 />} />
           
           
           
