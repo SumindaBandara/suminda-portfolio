@@ -18,6 +18,8 @@ import CeyloneCarSale from './components/WebPages/CeyloneCarSale';
 import CORHoldingsSale from './components/WebPages/corholdings';
 import CORHoldings2 from './components/WebPages/corholdings2';
 
+import CarRental from './components/sections/CarRental/CarRental';
+
 
 function App() {
   return (
@@ -51,6 +53,8 @@ function App() {
           <Route path="/CeyloneCarSale" element={<CeyloneCarSale />} />
           <Route path="/CORHoldingsSale" element={<CORHoldingsSale />} />
           <Route path="/BusinessLanka" element={<CORHoldings2 />} />
+
+          <Route path="/CarRental" element={<CarRental />} />
           
           
           
