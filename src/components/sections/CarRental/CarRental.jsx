@@ -559,14 +559,14 @@ const CarRental = () => {
               <div className="space-y-4">
                 <div className="rounded-2xl overflow-hidden shadow-xl h-64">
                   <img 
-                    src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800" 
+                    src="/assets/e.png" 
                     alt="Luxury car showroom"
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                   />
                 </div>
                 <div className="rounded-2xl overflow-hidden shadow-xl h-48">
                   <img 
-                    src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&q=80&w=800" 
+                    src="/assets/b.png" 
                     alt="Happy customer"
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                   />
@@ -575,14 +575,14 @@ const CarRental = () => {
               <div className="space-y-4 pt-12">
                 <div className="rounded-2xl overflow-hidden shadow-xl h-48">
                   <img 
-                    src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=800" 
+                    src="/assets/c.png" 
                     alt="Premium vehicle"
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                   />
                 </div>
                 <div className="rounded-2xl overflow-hidden shadow-xl h-64">
                   <img 
-                    src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800" 
+                    src="/assets/d.png" 
                     alt="Customer service"
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                   />
@@ -689,7 +689,7 @@ const CarRental = () => {
             <div className="relative">
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=1200" 
+                  src="assets/a.jpg" 
                   alt="About Us - Luxury Cars"
                   className="w-full h-[500px] object-cover"
                 />
