@@ -47,12 +47,12 @@ function App() {
           <Route path="/contact" element={<ContactSection />} />
           
 
-          <Route path="/animation" element={<BookAnimationPage />} />
-          <Route path="/CarGallery" element={<CarGallery />} />
-          <Route path="/PlatinumCarSales" element={<PlatinumCarSales />} />CeyloneCarSale
-          <Route path="/CeyloneCarSale" element={<CeyloneCarSale />} />
-          <Route path="/CORHoldingsSale" element={<CORHoldingsSale />} />
-          <Route path="/BusinessLanka" element={<CORHoldings2 />} />
+          <Route path="/aaanimation" element={<BookAnimationPage />} />
+          <Route path="/aaCarGallery" element={<CarGallery />} />
+          <Route path="/aaPlatinumCarSales" element={<PlatinumCarSales />} />CeyloneCarSale
+          <Route path="/aaCeyloneCarSale" element={<CeyloneCarSale />} />
+          <Route path="/aaCORHoldingsSale" element={<CORHoldingsSale />} />
+          <Route path="/aaBusinessLanka" element={<CORHoldings2 />} />
 
           <Route path="/CarRental" element={<CarRental />} />
           

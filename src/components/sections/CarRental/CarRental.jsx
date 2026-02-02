@@ -369,169 +369,190 @@ const CarRental = () => {
       </header>
 
       {/* Hero Section with Booking Form */}
-      <section id="home" className="bg-gradient-to-br from-purple-600 via-purple-500 to-indigo-600 text-white py-20">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Hero Content */}
-            <div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                Experience the road like never before
-              </h1>
-              <p className="text-xl text-purple-100 mb-8">
-                Discover freedom with our premium car rental service. Wide selection, best prices, 24/7 support.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a href="#booking" className="px-8 py-4 bg-yellow-400 text-purple-900 rounded-lg hover:bg-yellow-300 transition-colors font-bold text-lg">
-                  Book a Car
-                </a>
-                <button 
-                  onClick={contactWhatsApp}
-                  className="px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white rounded-lg hover:bg-white/20 transition-colors font-bold text-lg flex items-center gap-2"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Chat with Us
-                </button>
-              </div>
-            </div>
+      {/* Hero Section */}
+<section id="home" className="bg-gradient-to-br from-purple-600 via-purple-500 to-indigo-600 text-white py-20">
+  <div className="container mx-auto px-6">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      
+      {/* Hero Content - Video Background is ONLY here */}
+      <div className="relative overflow-hidden rounded-3xl p-8 md:p-12 min-h-[500px] flex flex-col justify-center">
+        {/* Video Background Layer for Text Side Only */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            {/* Replace with your video path */}
+            <source src="/assets/testv.mp4" type="video/mp4" />
+          </video>
+          {/* Tint overlay to keep text readable */}
+          <div className="absolute inset-0 bg-purple-900/60 backdrop-blur-[2px]"></div>
+        </div>
 
-            {/* Booking Form - Web3Forms */}
-            <div id="booking" className="bg-white rounded-2xl shadow-2xl p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Make your trip</h3>
-              
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
-                    placeholder="Your name"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
-                    placeholder="your@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
-                    placeholder="+1 234 567 8900"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Pickup Date</label>
-                    <input
-                      type="date"
-                      name="pickupDate"
-                      value={formData.pickupDate}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Return Date</label>
-                    <input
-                      type="date"
-                      name="returnDate"
-                      value={formData.returnDate}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Pickup Location</label>
-                  <input
-                    type="text"
-                    name="pickupLocation"
-                    value={formData.pickupLocation}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
-                    placeholder="City or Airport"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Drop-off Location</label>
-                  <input
-                    type="text"
-                    name="dropoffLocation"
-                    value={formData.dropoffLocation}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
-                    placeholder="City or Airport"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Additional Message (Optional)</label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows="3"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900 resize-none"
-                    placeholder="Any special requirements?"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={formStatus === 'sending'}
-                  className="w-full py-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-bold text-lg flex items-center justify-center gap-2 disabled:opacity-50"
-                >
-                  {formStatus === 'sending' ? (
-                    'Sending...'
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      Submit Request
-                    </>
-                  )}
-                </button>
-
-                {formStatus === 'success' && (
-                  <div className="p-4 bg-green-100 text-green-800 rounded-lg font-semibold text-center">
-                    ✓ Request submitted successfully! We'll contact you soon.
-                  </div>
-                )}
-
-                {formStatus === 'error' && (
-                  <div className="p-4 bg-red-100 text-red-800 rounded-lg font-semibold text-center">
-                    ✗ Something went wrong. Please try again.
-                  </div>
-                )}
-              </form>
-            </div>
+        {/* Text Content - Positioned above the video */}
+        <div className="relative z-10">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            Experience the road like never before
+          </h1>
+          <p className="text-xl text-purple-100 mb-8">
+            Discover freedom with our premium car rental service. Wide selection, best prices, 24/7 support.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a href="#booking" className="px-8 py-4 bg-yellow-400 text-purple-900 rounded-lg hover:bg-yellow-300 transition-colors font-bold text-lg">
+              Book a Car
+            </a>
+            <button 
+              onClick={contactWhatsApp}
+              className="px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white rounded-lg hover:bg-white/20 transition-colors font-bold text-lg flex items-center gap-2"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Chat with Us
+            </button>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Booking Form - This stays on the original gradient background */}
+      <div id="booking" className="bg-white rounded-2xl shadow-2xl p-8 relative z-10">
+        <h3 className="text-2xl font-bold text-gray-900 mb-6">Make your trip</h3>
+        
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
+              placeholder="Your name"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
+              placeholder="+1 234 567 8900"
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Pickup Date</label>
+              <input
+                type="date"
+                name="pickupDate"
+                value={formData.pickupDate}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Return Date</label>
+              <input
+                type="date"
+                name="returnDate"
+                value={formData.returnDate}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Pickup Location</label>
+            <input
+              type="text"
+              name="pickupLocation"
+              value={formData.pickupLocation}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
+              placeholder="City or Airport"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Drop-off Location</label>
+            <input
+              type="text"
+              name="dropoffLocation"
+              value={formData.dropoffLocation}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900"
+              placeholder="City or Airport"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Additional Message (Optional)</label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              rows="3"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none text-gray-900 resize-none"
+              placeholder="Any special requirements?"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            disabled={formStatus === 'sending'}
+            className="w-full py-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-bold text-lg flex items-center justify-center gap-2 disabled:opacity-50"
+          >
+            {formStatus === 'sending' ? (
+              'Sending...'
+            ) : (
+              <>
+                <Send className="w-5 h-5" />
+                Submit Request
+              </>
+            )}
+          </button>
+
+          {formStatus === 'success' && (
+            <div className="p-4 bg-green-100 text-green-800 rounded-lg font-semibold text-center">
+              ✓ Request submitted successfully!
+            </div>
+          )}
+
+          {formStatus === 'error' && (
+            <div className="p-4 bg-red-100 text-red-800 rounded-lg font-semibold text-center">
+              ✗ Something went wrong.
+            </div>
+          )}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Features Section */}
       <section className="py-16 bg-gray-50">
@@ -979,6 +1000,75 @@ const CarRental = () => {
             </button>
           </div>
         </div>
+      </section>
+
+      <section>
+        {/* Map Section */}
+                <div className="max-w-7xl mx-auto mt-16">
+                  <a 
+                      href="https://www.google.com/maps/place/Ceylon+Car+Sales/data=!4m2!3m1!1s0x0:0x36602673b99ef2ab?sa=X&ved=1t:2428&ictx=111" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group block cursor-pointer"
+                    >
+                      {/* Static Map Background */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900">
+                        {/* Map Pattern/Grid */}
+                        <div className="absolute inset-0 opacity-20">
+                          {[...Array(10)].map((_, i) => (
+                            <div key={`h${i}`} className="absolute w-full h-px bg-white" style={{ top: `${i * 10}%` }}></div>
+                          ))}
+                          {[...Array(10)].map((_, i) => (
+                            <div key={`v${i}`} className="absolute h-full w-px bg-white" style={{ left: `${i * 10}%` }}></div>
+                          ))}
+                        </div>
+                        
+                        {/* Map Image Overlay */}
+                        <img 
+                          src="/assets/map.png"
+                          alt="Map Location"
+                          className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-500 grayscale group-hover:grayscale-0"
+                        />
+                        
+                        {/* Center Pin */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full animate-bounce-slow">
+                          <div className="relative">
+                            <MapPin className="w-16 h-16 text-red-600 fill-red-600 drop-shadow-2xl" />
+                            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-red-600 rounded-full blur-xl opacity-50"></div>
+                          </div>
+                        </div>
+                        
+                        {/* Ripple Effect */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                          <div className="w-32 h-32 border-4 border-red-500 rounded-full animate-ping opacity-30"></div>
+                        </div>
+                      </div>
+                      
+                      {/* Overlay on Map */}
+                      <div className="absolute top-4 left-4 bg-white text-gray-900 px-4 py-2 rounded-full shadow-lg flex items-center gap-2 z-10">
+                        <MapPin className="w-5 h-5 text-red-600" />
+                        <span className="font-bold">Malabe, Sri Lanka</span>
+                      </div>
+                      
+                      {/* Address Info Card */}
+                      <div className="absolute bottom-20 left-4 right-4 bg-white/95 backdrop-blur-sm text-gray-900 p-4 rounded-xl shadow-xl">
+                        <h4 className="font-bold text-lg mb-1">Ceylon Car Sales</h4>
+                        <p className="text-gray-600 text-sm flex items-start gap-2">
+                          <MapPin className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
+                          49C, 13 New Kandy Rd, Kothalawala, Malabe 10640
+                        </p>
+                      </div>
+                      
+                      
+                      
+                      {/* Hover Instruction */}
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                        <div className="bg-white text-gray-900 px-6 py-3 rounded-full font-bold text-lg">
+                          Click to Open in Google Maps
+                        </div>
+                      </div>
+                    </a>
+                </div>
       </section>
 
       {/* Footer */}
