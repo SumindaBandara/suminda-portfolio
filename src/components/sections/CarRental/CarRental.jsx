@@ -57,44 +57,44 @@ const CarRental = () => {
   }, []);
 
   // Web3Forms submission handler
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setFormStatus('sending');
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setFormStatus('sending');
 
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Replace with your actual Web3Forms access key
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        pickup_location: formData.pickupLocation,
-        dropoff_location: formData.dropoffLocation,
-        pickup_date: formData.pickupDate,
-        return_date: formData.returnDate,
-        message: formData.message,
-        subject: 'New Car Rental Booking Request'
-      })
-    });
+  //   const response = await fetch('https://api.web3forms.com/submit', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Replace with your actual Web3Forms access key
+  //       name: formData.name,
+  //       email: formData.email,
+  //       phone: formData.phone,
+  //       pickup_location: formData.pickupLocation,
+  //       dropoff_location: formData.dropoffLocation,
+  //       pickup_date: formData.pickupDate,
+  //       return_date: formData.returnDate,
+  //       message: formData.message,
+  //       subject: 'New Car Rental Booking Request'
+  //     })
+  //   });
 
-    const result = await response.json();
+  //   const result = await response.json();
     
-    if (result.success) {
-      setFormStatus('success');
-      setFormData({
-        name: '', email: '', phone: '', pickupLocation: '',
-        dropoffLocation: '', pickupDate: '', returnDate: '', message: ''
-      });
-      setTimeout(() => setFormStatus(''), 5000);
-    } else {
-      setFormStatus('error');
-      setTimeout(() => setFormStatus(''), 5000);
-    }
-  };
+  //   if (result.success) {
+  //     setFormStatus('success');
+  //     setFormData({
+  //       name: '', email: '', phone: '', pickupLocation: '',
+  //       dropoffLocation: '', pickupDate: '', returnDate: '', message: ''
+  //     });
+  //     setTimeout(() => setFormStatus(''), 5000);
+  //   } else {
+  //     setFormStatus('error');
+  //     setTimeout(() => setFormStatus(''), 5000);
+  //   }
+  // };
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -102,7 +102,7 @@ const CarRental = () => {
 
   // WhatsApp contact function
   const contactWhatsApp = () => {
-    const phoneNumber = '1234567890'; // Replace with your WhatsApp number (country code + number)
+    const phoneNumber = '0707780743'; // Replace with your WhatsApp number (country code + number)
     const message = 'Hi! I would like to inquire about car rental services.';
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
@@ -249,6 +249,23 @@ const CarRental = () => {
     ? cars 
     : cars.filter(car => car.category === selectedCategory);
 
+    const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const phoneNumber = '94707780749'; // Your number with country code
+    
+    // Formatting the message for a professional look
+    const message = `*New Booking Request*%0A` +
+      `--------------------------%0A` +
+      `*Name:* ${formData.name}%0A` +
+      `*Car:* ${formData.message || 'Not specified'}%0A` +
+      `*Pickup:* ${formData.pickupDate}%0A` +
+      `*Location:* ${formData.pickupLocation}%0A` +
+      `--------------------------`;
+
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -256,8 +273,12 @@ const CarRental = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
-                <Car className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center overflow-hidden">
+                <img 
+                  src="https://media.istockphoto.com/id/1332607862/vector/car-rental-logo-template-design.jpg?s=612x612&w=0&k=20&c=Z7HXnGff9rQIvLWgrYT0E8oge2NMlLg5v0ZB1dCe4zM=" 
+                  alt="Description" 
+                  className="w-full h-full object-cover" 
+                />
               </div>
               <span className="text-2xl font-bold text-gray-900">CarRent</span>
             </div>
@@ -932,26 +953,51 @@ const CarRental = () => {
           </div>
 
           {/* Trust Badges */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 mb-12">
-            <div className="grid md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-black text-purple-600 mb-2">4.9/5</div>
-                <p className="text-gray-600 font-semibold">Average Rating</p>
+         <div className="bg-white rounded-3xl shadow-xl p-10 mb-12 border border-purple-50 transition-all duration-500 hover:shadow-2xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-gray-100 md:divide-x">
+              
+              {/* Stat 1 */}
+              <div className="group px-4 animate-fadeInUp" style={{ animationDelay: '100ms' }}>
+                <div className="text-4xl lg:text-5xl font-black text-purple-600 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                  4.9<span className="text-2xl text-purple-400">/5</span>
+                </div>
+                <p className="text-gray-500 font-bold text-xs uppercase tracking-widest group-hover:text-purple-600 transition-colors">
+                  Average Rating
+                </p>
               </div>
-              <div>
-                <div className="text-4xl font-black text-purple-600 mb-2">5,000+</div>
-                <p className="text-gray-600 font-semibold">Happy Customers</p>
+
+              {/* Stat 2 */}
+              <div className="group px-4 animate-fadeInUp" style={{ animationDelay: '200ms' }}>
+                <div className="text-4xl lg:text-5xl font-black text-purple-600 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                  5,000<span className="text-2xl text-purple-400">+</span>
+                </div>
+                <p className="text-gray-500 font-bold text-xs uppercase tracking-widest group-hover:text-purple-600 transition-colors">
+                  Happy Customers
+                </p>
               </div>
-              <div>
-                <div className="text-4xl font-black text-purple-600 mb-2">98%</div>
-                <p className="text-gray-600 font-semibold">Satisfaction Rate</p>
+
+              {/* Stat 3 */}
+              <div className="group px-4 animate-fadeInUp" style={{ animationDelay: '300ms' }}>
+                <div className="text-4xl lg:text-5xl font-black text-purple-600 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                  98<span className="text-2xl text-purple-400">%</span>
+                </div>
+                <p className="text-gray-500 font-bold text-xs uppercase tracking-widest group-hover:text-purple-600 transition-colors">
+                  Satisfaction Rate
+                </p>
               </div>
-              <div>
-                <div className="text-4xl font-black text-purple-600 mb-2">100%</div>
-                <p className="text-gray-600 font-semibold">Verified Reviews</p>
+
+              {/* Stat 4 */}
+              <div className="group px-4 animate-fadeInUp" style={{ animationDelay: '400ms' }}>
+                <div className="text-4xl lg:text-5xl font-black text-purple-600 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                  100<span className="text-2xl text-purple-400">%</span>
+                </div>
+                <p className="text-gray-500 font-bold text-xs uppercase tracking-widest group-hover:text-purple-600 transition-colors">
+                  Verified Reviews
+                </p>
               </div>
+
             </div>
-          </div>
+            </div>
 
           {/* CTA Section */}
           <div className="text-center bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl p-12 text-white">
