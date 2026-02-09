@@ -210,40 +210,40 @@ const CarRental = () => {
     { value: '24/7', label: 'Customer Support' }
   ];
 
-  const reviews = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      role: 'Business Traveler',
-      rating: 5,
-      text: 'Absolutely fantastic service! The car was spotless and the booking process was incredibly smooth. Will definitely use again for my next trip.',
-      avatar: 'SJ'
-    },
-    {
-      id: 2,
-      name: 'Michael Chen',
-      role: 'Family Vacation',
-      rating: 5,
-      text: 'Perfect experience from start to finish. The SUV was spacious and comfortable for our family road trip. Highly recommend!',
-      avatar: 'MC'
-    },
-    {
-      id: 3,
-      name: 'Emily Rodriguez',
-      role: 'Weekend Getaway',
-      rating: 5,
-      text: 'Great selection of luxury cars at competitive prices. The BMW I rented was in pristine condition. Customer service was top-notch!',
-      avatar: 'ER'
-    },
-    {
-      id: 4,
-      name: 'David Thompson',
-      role: 'Corporate Client',
-      rating: 5,
-      text: 'I rent cars frequently for business, and this is by far the best service I\'ve used. Professional, reliable, and hassle-free.',
-      avatar: 'DT'
-    }
-  ];
+ const reviews = [
+  {
+    id: 1,
+    name: 'Sarah Johnson',
+    role: 'Business Traveler',
+    rating: 5,
+    text: 'Absolutely fantastic service! The car was spotless and the booking process was incredibly smooth. Will definitely use again for my next trip.',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150'
+  },
+  {
+    id: 2,
+    name: 'Michael Chen',
+    role: 'Family Vacation',
+    rating: 5,
+    text: 'Perfect experience from start to finish. The SUV was spacious and comfortable for our family road trip. Highly recommend!',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150'
+  },
+  {
+    id: 3,
+    name: 'Emily Rodriguez',
+    role: 'Weekend Getaway',
+    rating: 5,
+    text: 'Great selection of luxury cars at competitive prices. The BMW I rented was in pristine condition. Customer service was top-notch!',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150'
+  },
+  {
+    id: 4,
+    name: 'David Thompson',
+    role: 'Corporate Client',
+    rating: 5,
+    text: "I rent cars frequently for business, and this is by far the best service I've used. Professional, reliable, and hassle-free.",
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150'
+  }
+];
 
   const filteredCars = selectedCategory === 'All' 
     ? cars 
@@ -940,9 +940,15 @@ const CarRental = () => {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-4 pt-6 border-t-2 border-gray-100 group-hover:border-purple-200 transition-colors">
-                  <div className="w-14 h-14 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-transform">
-                    {review.avatar}
+                 <div className="w-14 h-14 bg-gradient-to-br rounded-full p-0.5 shadow-lg group-hover:scale-110 transition-transform overflow-hidden">
+                  <div className="w-full h-full rounded-full overflow-hidden border-2 border-white">
+                    <img 
+                      src={review.image} 
+                      alt={review.name} 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
+                </div>
                   <div>
                     <p className="font-black text-gray-900 text-lg">{review.name}</p>
                     <p className="text-sm text-purple-600 font-semibold">{review.role}</p>
